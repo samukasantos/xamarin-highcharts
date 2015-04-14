@@ -56,9 +56,6 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
     <None Include="Service References\WCFHighChartsService\WCFHighChartsService.wsdl" />
     <None Include="Service References\WCFHighChartsService\WCFHighChartsService.xsd">
@@ -73,6 +70,9 @@
     <None Include="Service References\WCFHighChartsService\Xamarin.HighCharts.Services.WCFHighChartsService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WCFHighChartsService\" />

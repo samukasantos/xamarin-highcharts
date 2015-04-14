@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
 using Xamarin.HighCharts.Services.WCFHighChartsService;
+
+
 
 namespace Xamarin.HighCharts
 {
@@ -16,16 +17,17 @@ namespace Xamarin.HighCharts
 
         public static Page GetMainPage()
         {
-           /*   WCFHighChartsServiceClient webService = new WCFHighChartsServiceClient();
-         
-            User user = new User();
-            user.ID = 1;
+            WCFHighChartsServiceClient webService = new WCFHighChartsServiceClient();
+
+          /*  User user = new User();
+            user.ID = 10;
             user.Login = "highcharts";
             user.Password = "123";
-            user.Name = "charts";
-         
+            user.Email = "charts@charts.com";
+
             webService.AddUserAsync(user);
-            webService.DeleteUserAsync(user.ID);*/
+            webService.GetUsersCompleted += webService_GetUsersCompleted;
+            webService.GetUsersAsync();*/
             return new ContentPage
             {
                 Content = new Label
@@ -36,10 +38,17 @@ namespace Xamarin.HighCharts
                 },
             };
 
-        
+
         }
 
-      
+        static void webService_GetUsersCompleted(object sender, GetUsersCompletedEventArgs e)
+        {
+            var itens = e.Result;
+        }
+
+
+
+
 
 
 

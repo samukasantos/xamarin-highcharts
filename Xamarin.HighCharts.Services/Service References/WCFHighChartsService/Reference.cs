@@ -19,7 +19,7 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
         
         private int IDField;
         
-        private string NameField;
+        private string EmailField;
         
         private string PasswordField;
         
@@ -38,20 +38,20 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public string Email {
             get {
-                return this.NameField;
+                return this.EmailField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
         public string Password {
             get {
                 return this.PasswordField;
@@ -109,7 +109,7 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IWCFHighChartsService/GetUsers", ReplyAction="http://tempuri.org/IWCFHighChartsService/GetUsersResponse")]
         System.IAsyncResult BeginGetUsers(System.AsyncCallback callback, object asyncState);
         
-        System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User> EndGetUsers(System.IAsyncResult result);
+        System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User> EndGetUsers(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -184,10 +184,10 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
             this.results = results;
         }
         
-        public System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User> Result {
+        public System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User>)(this.results[0]));
+                return ((System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User>)(this.results[0]));
             }
         }
     }
@@ -430,7 +430,7 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User> Xamarin.HighCharts.Services.WCFHighChartsService.IWCFHighChartsService.EndGetUsers(System.IAsyncResult result) {
+        System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User> Xamarin.HighCharts.Services.WCFHighChartsService.IWCFHighChartsService.EndGetUsers(System.IAsyncResult result) {
             return base.Channel.EndGetUsers(result);
         }
         
@@ -439,7 +439,7 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
         }
         
         private object[] OnEndGetUsers(System.IAsyncResult result) {
-            System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User> retVal = ((Xamarin.HighCharts.Services.WCFHighChartsService.IWCFHighChartsService)(this)).EndGetUsers(result);
+            System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User> retVal = ((Xamarin.HighCharts.Services.WCFHighChartsService.IWCFHighChartsService)(this)).EndGetUsers(result);
             return new object[] {
                     retVal};
         }
@@ -614,9 +614,9 @@ namespace Xamarin.HighCharts.Services.WCFHighChartsService {
                 return _result;
             }
             
-            public System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User> EndGetUsers(System.IAsyncResult result) {
+            public System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User> EndGetUsers(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User> _result = ((System.Collections.ObjectModel.ObservableCollection<Xamarin.HighCharts.Services.WCFHighChartsService.User>)(base.EndInvoke("GetUsers", _args, result)));
+                System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User> _result = ((System.Collections.Generic.List<Xamarin.HighCharts.Services.WCFHighChartsService.User>)(base.EndInvoke("GetUsers", _args, result)));
                 return _result;
             }
         }
