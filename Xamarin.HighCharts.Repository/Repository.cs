@@ -1,17 +1,32 @@
 ﻿
-using Xamarin.HighCharts.InfraStructure.UnitWork;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
+using Xamarin.HighCharts.InfraStructure.UnitWork;
 using Xamarin.HighCharts.Repository.Context.Interface;
+using Xamarin.HighCharts.Repository.Database.Interfaces;
 
 namespace Xamarin.HighCharts.Repository
 {
     public abstract class Repository<AggregateType, IdTtype, DatabaseType> : IUnitWorkRepository
+        where DatabaseType : IDatabaseModel
+        where AggregateType : IAggregateRoot
     {
 
         #region Fields
 
-        private readonly IUnitWork _unitWork;
+        private readonly IUnitWork  _unitWork;
         private readonly IDBContext _dbContext;
+
+        #endregion
+
+        #region Properties
+
+        public IDBContext DBContext 
+        { 
+            get 
+            { 
+                return _dbContext; 
+            } 
+        }
 
         #endregion
 
@@ -19,7 +34,7 @@ namespace Xamarin.HighCharts.Repository
 
         public Repository()
         {
-
+            _dbContext.Initialize<DatabaseType>();
         }
 
         #endregion
@@ -27,23 +42,40 @@ namespace Xamarin.HighCharts.Repository
         #region IUnitWorkRepository members
         public void PersistSave(IAggregateRoot aggregate)
         {
-            _unitWork.RegisterSave(aggregate, this);
+            _dbContext.Save(ConvertToDatabaseType(aggregate));
         }
 
         public void PersistUpdate(IAggregateRoot aggregate)
         {
-            _unitWork.RegisterUpdate(aggregate, this);
+            _dbContext.Update(ConvertToDatabaseType(aggregate));
         }
 
         public void PersistDelete(IAggregateRoot aggregate)
         {
-            _unitWork.RegisterDelete(aggregate, this);
+            _dbContext.Delete(ConvertToDatabaseType(aggregate));
         }
  
         #endregion
 
-        #region
-        
+        #region Methods
+
+        public void Save(AggregateType aggregate) 
+        {
+            _unitWork.RegisterSave(aggregate, this);
+        }
+        public void Update(AggregateType aggregate) 
+        {
+            _unitWork.RegisterUpdate(aggregate, this);
+        }
+        public void Delete(AggregateType aggregate) 
+        {
+            _unitWork.RegisterDelete(aggregate, this);
+        }
+
+        public abstract IDatabaseModel ConvertToDatabaseType(IAggregateRoot aggregateRoot);
+        public abstract AggregateType FindById(IdTtype id);
+
         #endregion
+
     }
 }

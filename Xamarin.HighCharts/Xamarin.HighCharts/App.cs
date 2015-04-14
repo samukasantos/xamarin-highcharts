@@ -1,57 +1,39 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.HighCharts.Services.WCFHighChartsService;
-
-
+using Xamarin.HighCharts.Common.DependencyService;
+using Xamarin.HighCharts.Common.DependencyService.Enumerators;
+using Xamarin.HighCharts.Common.DependencyService.Interfaces;
+using Xamarin.HighCharts.DataAccess.Repositories;
+using Xamarin.HighCharts.Domain;
+using Xamarin.HighCharts.Domain.Interfaces;
+using Xamarin.HighCharts.Repository.Context;
+using Xamarin.HighCharts.Repository.Context.Interface;
+using Xamarin.HighCharts.Repository.Database.User;
+using Xamarin.HighCharts.Repository.Database.User.Interfaces;
 
 namespace Xamarin.HighCharts
 {
-
-    public class App
+    public class App : Application, IDependencyContainerService
     {
 
-
-        public static Page GetMainPage()
+        #region IDependencyContainerService members
+        public virtual void ContainerStart()
         {
-            WCFHighChartsServiceClient webService = new WCFHighChartsServiceClient();
+            throw new System.NotImplementedException();
+        }
 
-          /*  User user = new User();
-            user.ID = 10;
-            user.Login = "highcharts";
-            user.Password = "123";
-            user.Email = "charts@charts.com";
-
-            webService.AddUserAsync(user);
-            webService.GetUsersCompleted += webService_GetUsersCompleted;
-            webService.GetUsersAsync();*/
-            return new ContentPage
+        public virtual IList<IDependencyObject> SetDependencies()
+        {
+            return new List<IDependencyObject> 
             {
-                Content = new Label
-                {
-                    Text = "Hello, Forms !",
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                },
+                new DependencyObject(typeof(IUser), typeof(User), LifetimeType.Transient),
+                new DependencyObject(typeof(IUserRepository), typeof(RepositoryUser), LifetimeType.Transient),
+                new DependencyObject(typeof(IUserDatabase), typeof(UserDatabase), LifetimeType.Transient),
+                new DependencyObject(typeof(IDBContext), typeof(DBContext<SQLite.Net.SQLiteConnection> ))
+               
             };
-
-
-        }
-
-        static void webService_GetUsersCompleted(object sender, GetUsersCompletedEventArgs e)
-        {
-            var itens = e.Result;
-        }
-
-
-
-
-
-
-
-
+        } 
+        #endregion
     }
 }

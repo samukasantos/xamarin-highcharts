@@ -6,6 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 namespace Xamarin.HighCharts.iOS
 {
@@ -13,7 +14,7 @@ namespace Xamarin.HighCharts.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : UIApplicationDelegate
+    public partial class AppDelegate :FormsApplicationDelegate
     {
         // class-level declarations
         UIWindow window;
@@ -27,15 +28,11 @@ namespace Xamarin.HighCharts.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Forms.Init();
+            global::Xamarin.Forms.Forms.Init();
 
-            window = new UIWindow(UIScreen.MainScreen.Bounds);
+            LoadApplication(new App());
 
-            window.RootViewController = App.GetMainPage().CreateViewController();
-
-            window.MakeKeyAndVisible();
-
-            return true;
+            return base.FinishedLaunching(app, options);
         }
     }
 }
