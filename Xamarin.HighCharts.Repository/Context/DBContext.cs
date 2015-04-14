@@ -1,6 +1,7 @@
 ﻿
 
 using System.Collections.Generic;
+using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using Xamarin.HighCharts.Repository.Context.Interface;
 using Xamarin.HighCharts.Repository.Database.Interfaces;
 
@@ -12,30 +13,54 @@ namespace Xamarin.HighCharts.Repository.Context
         #region Properties
 
         public IContext<DBConnection> Connection { get; private set; }
-        public List<IDatabaseModel> Database  { get; set; }
 
         #endregion
 
         #region Constructor
 
-        public DBContext()
-        {
-            Initialize();
-        }
+        public DBContext(){}
 
         #endregion
 
         #region IDBContext members
 
-        public virtual void Initialize()
+        public virtual void Initialize<DatabaseType>()
+            where DatabaseType : IDatabaseModel
         {
+            #region SQLite-Net
+
             if (Connection != null) 
             {
-                //Connection
+                var connection = Connection.GetConnection() as SQLite.Net.SQLiteConnection;
+                connection.CreateTable<DatabaseType>();
             }
+
+            #endregion
         }
 
+        public void Save(IDatabaseModel databaseModel)
+        {
+            #region SQLite-Net
+            
+            #endregion
+        }
+
+        public void Update(IDatabaseModel databaseModel)
+        {
+            #region SQLite-Net
+
+            #endregion
+        }
+
+        public void Delete(IDatabaseModel databaseModel)
+        {
+            #region SQLite-Net
+
+            #endregion
+        }
+
+
         #endregion
-        
+       
     }
 }
