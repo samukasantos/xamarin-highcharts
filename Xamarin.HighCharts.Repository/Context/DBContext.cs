@@ -38,10 +38,30 @@ namespace Xamarin.HighCharts.Repository.Context
             #endregion
         }
 
+        public virtual void Initialize<DatabaseType>()
+           where DatabaseType : IDatabaseModel
+        {
+            #region SQLite-Net
+
+            if (Connection != null)
+            {
+                var connection = Connection.GetConnection() as SQLite.Net.SQLiteConnection;
+                connection.CreateTable<DatabaseType>();
+            }
+
+            #endregion
+        }
+
         public void Save(IDatabaseModel databaseModel)
         {
             #region SQLite-Net
-            
+
+            if (Connection != null)
+            {
+                var connection = Connection.GetConnection() as SQLite.Net.SQLiteConnection;
+                connection.Insert(databaseModel);
+            }
+
             #endregion
         }
 
@@ -49,12 +69,24 @@ namespace Xamarin.HighCharts.Repository.Context
         {
             #region SQLite-Net
 
+            if (Connection != null)
+            {
+                var connection = Connection.GetConnection() as SQLite.Net.SQLiteConnection;
+                connection.Update(databaseModel);
+            }
+
             #endregion
         }
 
         public void Delete(IDatabaseModel databaseModel)
         {
             #region SQLite-Net
+
+            if (Connection != null)
+            {
+                var connection = Connection.GetConnection() as SQLite.Net.SQLiteConnection;
+                connection.Delete(databaseModel);
+            }
 
             #endregion
         }

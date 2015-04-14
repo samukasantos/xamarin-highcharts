@@ -17,6 +17,18 @@ namespace Xamarin.HighCharts.Repository
 
         #endregion
 
+        #region Properties
+
+        public IDBContext DBContext 
+        { 
+            get 
+            { 
+                return _dbContext; 
+            } 
+        }
+
+        #endregion
+
         #region Constructor
 
         public Repository()
@@ -60,6 +72,7 @@ namespace Xamarin.HighCharts.Repository
         }
 
         public abstract IDatabaseModel ConvertToDatabaseType(IAggregateRoot aggregateRoot);
+        public abstract IAggregateRoot FindById(IdTtype id);
 
         #endregion
 
