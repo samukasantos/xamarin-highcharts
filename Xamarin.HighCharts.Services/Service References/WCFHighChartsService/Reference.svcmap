@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d8bdf148-dc76-494d-b2a7-64811e096064" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://xamarinservices.cloudapp.net/WCFHighChartsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WCFHighChartsService.xsd" MetadataType="Schema" ID="6e563421-566b-4aba-acd7-8bc6f1ed8264" SourceId="1" SourceUrl="http://xamarinservices.cloudapp.net/WCFHighChartsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="WCFHighChartsService.wsdl" MetadataType="Wsdl" ID="6390b61c-85c8-4a67-b389-a51201703b5d" SourceId="1" SourceUrl="http://xamarinservices.cloudapp.net/WCFHighChartsService.svc?wsdl" />
+    <MetadataFile FileName="WCFHighChartsService1.xsd" MetadataType="Schema" ID="da6703f7-a14b-4294-b99a-a08d1f03c1d4" SourceId="1" SourceUrl="http://xamarinservices.cloudapp.net/WCFHighChartsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WCFHighChartsService.disco" MetadataType="Disco" ID="0117dd53-f44f-4f47-b21f-3f7a71598d4e" SourceId="1" SourceUrl="http://xamarinservices.cloudapp.net/WCFHighChartsService.svc?disco" />
+    <MetadataFile FileName="WCFHighChartsService2.xsd" MetadataType="Schema" ID="53fab6d6-5a83-4da6-9510-1366a5bf6c28" SourceId="1" SourceUrl="http://xamarinservices.cloudapp.net/WCFHighChartsService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
