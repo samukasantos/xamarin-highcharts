@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B9BC2D
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms", "Forms", "{2A701157-A632-477E-BA9D-B00720D558F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -452,5 +454,10 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	
+	GlobalSection(NestedProjects) = preSolution
+		{41189108-1532-40C6-B168-9B1D29FC5EEC} = {2A701157-A632-477E-BA9D-B00720D558F4}
+		{2D95CA72-181B-4865-AC70-386CEE1424D3} = {2A701157-A632-477E-BA9D-B00720D558F4}
+		{03EE3210-D1EB-458A-A3D5-E4F041D3979F} = {2A701157-A632-477E-BA9D-B00720D558F4}
+		{58818F56-349C-425C-A995-DDDB949CFE23} = {2A701157-A632-477E-BA9D-B00720D558F4}
+	EndGlobalSection
 EndGlobal

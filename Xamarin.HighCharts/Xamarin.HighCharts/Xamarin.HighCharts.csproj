@@ -44,6 +44,9 @@
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="SQLite.Net">
+      <HintPath>..\..\packages\SQLite.Net-PCL.2.5.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\..\packages\Xamarin.Forms.1.4.1.6349\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -53,6 +56,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.Common\Xamarin.HighCharts.Common.csproj">
+      <Project>{f10ba1cc-594b-448e-b92d-ef09e95c1ae1}</Project>
+      <Name>Xamarin.HighCharts.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.DataAccess\Xamarin.HighCharts.DataAccess.csproj">
+      <Project>{973837b4-11a5-4b92-a2ce-3f4d21330520}</Project>
+      <Name>Xamarin.HighCharts.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.Domain\Xamarin.HighCharts.Domain.csproj">
+      <Project>{be1cd0e0-c769-4344-aac9-430062394289}</Project>
+      <Name>Xamarin.HighCharts.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.InfraStructure\Xamarin.HighCharts.InfraStructure.csproj">
+      <Project>{d1571159-afc2-4827-932b-a34acf104145}</Project>
+      <Name>Xamarin.HighCharts.InfraStructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.Repository\Xamarin.HighCharts.Repository.csproj">
+      <Project>{9af6edaa-41ca-417c-85f6-6332c8ff774e}</Project>
+      <Name>Xamarin.HighCharts.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
