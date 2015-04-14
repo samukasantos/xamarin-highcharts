@@ -16,7 +16,7 @@ namespace Xamarin.HighCharts
 
         public static Page GetMainPage()
         {
-              WCFHighChartsServiceClient webService = new WCFHighChartsServiceClient();
+           /*   WCFHighChartsServiceClient webService = new WCFHighChartsServiceClient();
          
             User user = new User();
             user.ID = 1;
@@ -25,7 +25,7 @@ namespace Xamarin.HighCharts
             user.Name = "charts";
          
             webService.AddUserAsync(user);
-           
+            webService.DeleteUserAsync(user.ID);*/
             return new ContentPage
             {
                 Content = new Label
@@ -36,7 +36,7 @@ namespace Xamarin.HighCharts
                 },
             };
 
-            webService.DeleteUserAsync(user.ID);
+        
         }
 
       
