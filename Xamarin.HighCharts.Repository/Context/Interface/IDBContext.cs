@@ -12,7 +12,7 @@ namespace Xamarin.HighCharts.Repository.Context.Interface
         void Save(IDatabaseModel databaseModel);
         void Update(IDatabaseModel databaseModel);
         void Delete(IDatabaseModel databaseModel);
-        IEnumerable<IDatabaseModel> FindAll();
+        IEnumerable<T> FindAll<T>() where T : IDatabaseModel, new();
 
     }
 }

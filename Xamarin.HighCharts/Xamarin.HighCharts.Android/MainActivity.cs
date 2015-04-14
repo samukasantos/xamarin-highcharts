@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 namespace Xamarin.HighCharts.Droid
 {
     [Activity(Label = "Xamarin.HighCharts", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : AndroidActivity
+    public class MainActivity : FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -20,7 +20,7 @@ namespace Xamarin.HighCharts.Droid
 
             Xamarin.Forms.Forms.Init(this, bundle);
 
-            SetPage(App.GetMainPage());
+            LoadApplication(new App());
         }
     }
 }

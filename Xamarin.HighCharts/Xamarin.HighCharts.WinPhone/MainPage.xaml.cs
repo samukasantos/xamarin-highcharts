@@ -9,18 +9,20 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.WinPhone;
 
 
 namespace Xamarin.HighCharts.WinPhone
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : FormsApplicationPage
     {
         public MainPage()
         {
             InitializeComponent();
 
-            Forms.Init();
-            Content = Xamarin.HighCharts.App.GetMainPage().ConvertPageToUIElement(this);
+            global::Xamarin.Forms.Forms.Init();
+
+            LoadApplication(new Xamarin.HighCharts.App());
         }
     }
 }

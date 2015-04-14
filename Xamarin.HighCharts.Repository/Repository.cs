@@ -8,6 +8,7 @@ namespace Xamarin.HighCharts.Repository
 {
     public abstract class Repository<AggregateType, IdTtype, DatabaseType> : IUnitWorkRepository
         where DatabaseType : IDatabaseModel
+        where AggregateType : IAggregateRoot
     {
 
         #region Fields
@@ -58,21 +59,21 @@ namespace Xamarin.HighCharts.Repository
 
         #region Methods
 
-        public void Save(IAggregateRoot aggregate) 
+        public void Save(AggregateType aggregate) 
         {
             _unitWork.RegisterSave(aggregate, this);
         }
-        public void Update(IAggregateRoot aggregate) 
+        public void Update(AggregateType aggregate) 
         {
             _unitWork.RegisterUpdate(aggregate, this);
         }
-        public void Delete(IAggregateRoot aggregate) 
+        public void Delete(AggregateType aggregate) 
         {
             _unitWork.RegisterDelete(aggregate, this);
         }
 
         public abstract IDatabaseModel ConvertToDatabaseType(IAggregateRoot aggregateRoot);
-        public abstract IAggregateRoot FindById(IdTtype id);
+        public abstract AggregateType FindById(IdTtype id);
 
         #endregion
 

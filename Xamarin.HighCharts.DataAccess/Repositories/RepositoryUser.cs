@@ -34,7 +34,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
             };
         }
 
-        public override IAggregateRoot FindById(int id)
+        public override User FindById(int id)
         {
             return FindAll().FirstOrDefault(c => c.Id == id);
         } 
@@ -44,7 +44,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
         public IEnumerable<User> FindAll()
         {
             var users     = new List<User>();
-            var dataItems = DBContext.FindAll();
+            var dataItems = DBContext.FindAll<UserDatabase>();
 
             foreach (var item in dataItems)
                 users.Add(ConvertToDomain(item));
@@ -68,5 +68,6 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
         }
 
         #endregion
+
     }
 }
