@@ -1,6 +1,6 @@
 ﻿
 
-namespace Xamarin.HighCharts.Common.DependencyService.Enumerators
+namespace Xamarin.HighCharts.InfraStructure.DependencyService.Enumerators
 {
     public enum LifetimeType
     {

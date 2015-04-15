@@ -1,9 +1,9 @@
 ﻿
 using System;
-using Xamarin.HighCharts.Common.DependencyService.Enumerators;
-using Xamarin.HighCharts.Common.DependencyService.Interfaces;
+using Xamarin.HighCharts.InfraStructure.DependencyService.Enumerators;
+using Xamarin.HighCharts.InfraStructure.DependencyService.Interfaces;
 
-namespace Xamarin.HighCharts.Common.DependencyService
+namespace Xamarin.HighCharts.InfraStructure.DependencyService
 {
     public class DependencyObject : IDependencyObject
     {

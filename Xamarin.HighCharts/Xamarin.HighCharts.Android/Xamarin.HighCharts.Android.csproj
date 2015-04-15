@@ -88,6 +88,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AndroidSQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -101,14 +102,19 @@
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.HighCharts.Common\Xamarin.HighCharts.Common.csproj">
-      <Project>{f10ba1cc-594b-448e-b92d-ef09e95c1ae1}</Project>
-      <Name>Xamarin.HighCharts.Common</Name>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.InfraStructure\Xamarin.HighCharts.InfraStructure.csproj">
+      <Project>{d1571159-afc2-4827-932b-a34acf104145}</Project>
+      <Name>Xamarin.HighCharts.InfraStructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.Repository\Xamarin.HighCharts.Repository.csproj">
+      <Project>{9af6edaa-41ca-417c-85f6-6332c8ff774e}</Project>
+      <Name>Xamarin.HighCharts.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xamarin.HighCharts\Xamarin.HighCharts.csproj">
       <Name>Xamarin.HighCharts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

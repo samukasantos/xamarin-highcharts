@@ -1,20 +1,18 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Xamarin.HighCharts.Page.MenuRootPage
 {
     public class MenuListData  : List<MenuRootIem>
     {
+        #region Constructor
         public MenuListData()
         {
             this.Add(new MenuRootIem()
             {
                 Title = "Login",
-             //   IconSource = "contacts.png",
+                //   IconSource = "contacts.png",
                 TargetType = typeof(LoginUserPage)
             });
 
@@ -24,7 +22,8 @@ namespace Xamarin.HighCharts.Page.MenuRootPage
                 //   IconSource = "contacts.png",
                 TargetType = typeof(RegisterUserPage)
             });
-
+            
+        #endregion
 
 
         }

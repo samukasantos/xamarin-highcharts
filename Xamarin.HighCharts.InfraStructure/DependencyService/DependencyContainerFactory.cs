@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Practices.Unity;
-using Xamarin.HighCharts.Common.DependencyService.Interfaces;
+using Xamarin.HighCharts.InfraStructure.DependencyService.Interfaces;
 
-namespace Xamarin.HighCharts.Common.DependencyService
+namespace Xamarin.HighCharts.InfraStructure.DependencyService
 {
     public static class DependencyContainerFactory
     {

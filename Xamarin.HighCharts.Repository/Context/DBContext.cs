@@ -2,6 +2,7 @@
 
 using SQLite.Net;
 using System.Collections.Generic;
+using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using Xamarin.HighCharts.Repository.Context.Interface;
 using Xamarin.HighCharts.Repository.Database.Interfaces;
@@ -20,7 +21,10 @@ namespace Xamarin.HighCharts.Repository.Context
 
         #region Constructor
 
-        public DBContext(){}
+        public DBContext()
+        {
+            Connection = DependencyResolver.Container.GetService<IContext<DBConnection>>();
+        }
 
         #endregion
 

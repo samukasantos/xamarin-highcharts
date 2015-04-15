@@ -158,9 +158,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.HighCharts.Common\Xamarin.HighCharts.Common.csproj">
-      <Project>{f10ba1cc-594b-448e-b92d-ef09e95c1ae1}</Project>
-      <Name>Xamarin.HighCharts.Common</Name>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.InfraStructure\Xamarin.HighCharts.InfraStructure.csproj">
+      <Project>{d1571159-afc2-4827-932b-a34acf104145}</Project>
+      <Name>Xamarin.HighCharts.InfraStructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xamarin.HighCharts\Xamarin.HighCharts.csproj">
       <Name>Xamarin.HighCharts</Name>

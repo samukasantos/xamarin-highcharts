@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace Xamarin.HighCharts.Common.DependencyService.Interfaces
+namespace Xamarin.HighCharts.InfraStructure.DependencyService.Interfaces
 {
     public interface IDependencyContainerService
     {

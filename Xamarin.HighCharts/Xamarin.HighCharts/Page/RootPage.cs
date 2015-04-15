@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.HighCharts.Page.MenuRootPage;
 using Xamarin.HighCharts.Page.Navigation;
@@ -11,12 +7,15 @@ namespace Xamarin.HighCharts.Page
 {
     public class RootPage : Xamarin.Forms.MasterDetailPage
     {
+        #region Fields
 
-        Color backGroundBolor = Color.FromHex("6fc833");
+        private Color backGroundBolor = Color.FromHex("6fc833"); 
+        #endregion
+
+        #region Constructor
         public RootPage()
         {
             var menuPage = new MenuPage();
-
             menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as MenuRootIem);
 
             Master = menuPage;
@@ -24,12 +23,13 @@ namespace Xamarin.HighCharts.Page
             {
                 BarBackgroundColor = backGroundBolor,
             };
-
-
-
         }
+        
+        #endregion
 
-        void NavigateTo(MenuRootIem menu)
+        #region Methods
+
+        private void NavigateTo(MenuRootIem menu)
         {
             Xamarin.Forms.Page displayPage = (Xamarin.Forms.Page)Activator.CreateInstance(menu.TargetType);
 
@@ -42,8 +42,9 @@ namespace Xamarin.HighCharts.Page
         protected override void OnAppearing()
         {
             base.OnAppearing();
+        } 
 
-        }
+        #endregion
     }
 
 }

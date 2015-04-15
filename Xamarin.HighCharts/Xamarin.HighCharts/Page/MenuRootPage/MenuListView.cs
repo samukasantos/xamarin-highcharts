@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.HighCharts.Page.MenuRootPage;
 using Xamarin.HighCharts.Views;
@@ -11,9 +7,10 @@ namespace Xamarin.HighCharts.Page
 {
     public class MenuListView : ListView
     {
+        #region Constructor
         public MenuListView()
         {
-            List<MenuRootIem> data = new MenuListData();
+            var data = new MenuListData();
             ItemsSource = data;
             VerticalOptions = LayoutOptions.FillAndExpand;
             BackgroundColor = Color.Transparent;
@@ -22,9 +19,9 @@ namespace Xamarin.HighCharts.Page
             cell.SetBinding(TextCell.TextProperty, "Title");
             cell.SetBinding(ImageCell.ImageSourceProperty, "IconSource");
 
-
             ItemTemplate = cell;
             SelectedItem = data[0];
-        }
+        } 
+        #endregion
     }
 }

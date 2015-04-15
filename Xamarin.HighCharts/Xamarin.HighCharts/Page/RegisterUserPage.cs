@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.HighCharts.ViewModel;
+using Xamarin.HighCharts.InfraStructure.DependencyService;
+using Xamarin.HighCharts.ViewModels.Interfaces;
 
 namespace Xamarin.HighCharts.Page
 {
     public class RegisterUserPage : ContentPage
     {
+        #region Constructor
         public RegisterUserPage()
         {
-            BindingContext = new RegisterUserViewModel(Navigation);
-            var layout = new StackLayout { Padding = 10 };
+            BindingContext = DependencyResolver.Container.GetService<IRegisterUserViewModel>("navigation", this.Navigation);
+            var layout     = new StackLayout { Padding = 10 };
 
             var label = new Label
             {
@@ -28,25 +26,25 @@ namespace Xamarin.HighCharts.Page
             layout.Children.Add(label);
 
             var email = new Entry { Placeholder = "Email" };
-            email.SetBinding(Entry.TextProperty, RegisterUserViewModel.EmailPropertyName);
+            email.SetBinding(Entry.TextProperty, "Email");
             layout.Children.Add(email);
 
             var password = new Entry { Placeholder = "Password", IsPassword = true };
-            password.SetBinding(Entry.TextProperty, RegisterUserViewModel.PasswordPropertyName);
+            password.SetBinding(Entry.TextProperty, "Password");
             layout.Children.Add(password);
 
             var name = new Entry { Placeholder = "Name", };
-            name.SetBinding(Entry.TextProperty, RegisterUserViewModel.NamePropertyName);
+            name.SetBinding(Entry.TextProperty, "Name");
             layout.Children.Add(name);
 
-        
-
             var button = new Button { Text = "Save", TextColor = Color.White };
-            button.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
-           
+            button.SetBinding(Button.CommandProperty, "LoginCommand");
+
             layout.Children.Add(button);
 
-            Content = new ScrollView { Content = layout };
+            Content = new ScrollView { Content = layout }; 
+
+        #endregion
         }
     }
 }

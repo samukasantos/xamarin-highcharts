@@ -37,7 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Messages\ServiceRequestBase.cs" />
+    <Compile Include="Messages\Base\AsyncCallStatus.cs" />
+    <Compile Include="Messages\Base\ServiceBase.cs" />
+    <Compile Include="Messages\User\IUserService.cs" />
+    <Compile Include="Messages\User\UserService.cs" />
     <Compile Include="Page\MenuRootPage\MenuRootIem.cs" />
     <Compile Include="Page\MenuRootPage\MenuListData.cs" />
     <Compile Include="Page\MenuRootPage\MenuListView.cs" />
@@ -46,12 +49,19 @@
     <Compile Include="Page\LoginUserPage.cs" />
     <Compile Include="Page\RegisterUserPage.cs" />
     <Compile Include="Page\RootPage.cs" />
-    <Compile Include="Page\ViewPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\IViewModel.cs" />
-    <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\RegisterUserViewModel.cs" />
+    <Compile Include="Service References\WCFHighChartsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Base\Interfaces\IViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\ICommonCommand.cs" />
+    <Compile Include="ViewModels\Interfaces\ILoginViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IRegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="Views\CustomImageCell.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.8\lib\portable-net40+sl4+wp7+win8\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SQLite.Net">
       <HintPath>..\..\packages\SQLite.Net-PCL.2.5.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
@@ -75,12 +85,15 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Xamarin.HighCharts.Services.WCFHighChartsService.User.datasource" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.wsdl" />
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.HighCharts.Common\Xamarin.HighCharts.Common.csproj">
-      <Project>{f10ba1cc-594b-448e-b92d-ef09e95c1ae1}</Project>
-      <Name>Xamarin.HighCharts.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Xamarin.HighCharts.DataAccess\Xamarin.HighCharts.DataAccess.csproj">
       <Project>{973837b4-11a5-4b92-a2ce-3f4d21330520}</Project>
       <Name>Xamarin.HighCharts.DataAccess</Name>
@@ -100,6 +113,24 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WCFHighChartsService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

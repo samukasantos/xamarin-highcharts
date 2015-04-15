@@ -2,7 +2,7 @@
 
 namespace Xamarin.HighCharts.Domain.Interfaces
 {
-    public interface IUser
+    public interface IUser : IDomain
     {
         string Name { get; set; }
         string Email { get; set; }
