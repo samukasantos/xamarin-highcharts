@@ -8,19 +8,16 @@ using Xamarin.HighCharts.ViewModel;
 
 namespace Xamarin.HighCharts.Page
 {
-    public class LoginUserPage : ContentPage
+    public class RegisterUserPage : ContentPage
     {
-
-        public LoginUserPage()
+        public RegisterUserPage()
         {
-
-
-            BindingContext = new LoginViewModel(Navigation);
+            BindingContext = new RegisterUserViewModel(Navigation);
             var layout = new StackLayout { Padding = 10 };
 
             var label = new Label
             {
-           
+
                 Font = Font.SystemFontOfSize(NamedSize.Large),
                 TextColor = Color.White,
                 VerticalOptions = LayoutOptions.Center,
@@ -30,23 +27,26 @@ namespace Xamarin.HighCharts.Page
 
             layout.Children.Add(label);
 
-            var username = new Entry { Placeholder = "Username" };
-            username.SetBinding(Entry.TextProperty, LoginViewModel.UsernamePropertyName);
-            layout.Children.Add(username);
+            var email = new Entry { Placeholder = "Email" };
+            email.SetBinding(Entry.TextProperty, RegisterUserViewModel.EmailPropertyName);
+            layout.Children.Add(email);
 
             var password = new Entry { Placeholder = "Password", IsPassword = true };
-            password.SetBinding(Entry.TextProperty, LoginViewModel.PasswordPropertyName);
+            password.SetBinding(Entry.TextProperty, RegisterUserViewModel.PasswordPropertyName);
             layout.Children.Add(password);
 
+            var name = new Entry { Placeholder = "Name", };
+            name.SetBinding(Entry.TextProperty, RegisterUserViewModel.NamePropertyName);
+            layout.Children.Add(name);
 
 
-            var button = new Button { Text = "Sign In", TextColor = Color.White };
+
+            var button = new Button { Text = "Save", TextColor = Color.White };
             button.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
 
             layout.Children.Add(button);
 
             Content = new ScrollView { Content = layout };
         }
-
     }
 }

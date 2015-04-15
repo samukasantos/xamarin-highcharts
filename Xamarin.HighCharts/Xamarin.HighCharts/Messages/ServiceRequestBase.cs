@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Xamarin.HighCharts.Domain;
 using Xamarin.HighCharts.WCFHighChartsService;
 
 namespace Xamarin.HighCharts.Messages
@@ -26,6 +28,8 @@ namespace Xamarin.HighCharts.Messages
         }
 
 
+        #region Validate User
+
         /// <summary>
         /// 
         /// </summary>
@@ -44,7 +48,7 @@ namespace Xamarin.HighCharts.Messages
                 throw asyncCallStatus.CompletedEventArgs.Error;
             }
             return asyncCallStatus.CompletedEventArgs.Result;
-           
+
 
         }
 
@@ -55,6 +59,30 @@ namespace Xamarin.HighCharts.Messages
             _autoResetEvent.Set();
         }
 
+
+        #endregion
+
+        #region Create User
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool AddUser(User user)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(user);
+                Client.AddUserAsync(json);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        #endregion
         private readonly AutoResetEvent _autoResetEvent = new AutoResetEvent(false);
 
         public class AsyncCallStatus<T>
