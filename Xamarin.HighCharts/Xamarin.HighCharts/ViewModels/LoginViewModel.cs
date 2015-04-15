@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.HighCharts.Domain;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.Messages;
 using Xamarin.HighCharts.ViewModels.Base;
 using Xamarin.HighCharts.ViewModels.Interfaces;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Xamarin.HighCharts.ViewModels
 {
@@ -46,7 +43,7 @@ namespace Xamarin.HighCharts.ViewModels
         public LoginViewModel(INavigation navigation)
             : base(navigation)
         {
-
+          
         }
 
         #endregion
@@ -68,8 +65,37 @@ namespace Xamarin.HighCharts.ViewModels
         protected async Task ExecuteLoginCommand()
         {
             var userService = DependencyResolver.Container.GetService<IUserService>();
-            userService.ValidateUser(Domain.Name, Domain.Password);
-        } 
+
+            try
+            {
+                ThrowExceptionIfInvalidDomain(Domain);
+               
+                var result = userService.ValidateUser(Domain.Name, Domain.Password);
+
+                if (result) 
+                {
+                
+                }
+            }
+            catch (Exception invalidDomainException)
+            {
+                ActionMessage.DisplayAlert("Error", invalidDomainException.Message, "Ok");
+            }
+        }
+
+        public override void ThrowExceptionIfInvalidDomain(User domain)
+        {
+            var rules = domain.GetBrokenRules( c => c.Name, c => c.Password);
+            if (rules.Any())
+            {
+                foreach (var rule in rules)
+                    throw new Exception(rule.DescriptionRule);
+            }
+        }
         #endregion
+
+
+
+       
     }
 }

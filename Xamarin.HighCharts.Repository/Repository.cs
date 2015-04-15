@@ -1,4 +1,5 @@
 ﻿
+using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using Xamarin.HighCharts.InfraStructure.UnitWork;
 using Xamarin.HighCharts.Repository.Context.Interface;
@@ -34,6 +35,10 @@ namespace Xamarin.HighCharts.Repository
 
         public Repository()
         {
+            
+            _unitWork  = DependencyResolver.Container.GetService<IUnitWork>();
+            _dbContext = DependencyResolver.Container.GetService<IDBContext>();
+
             _dbContext.Initialize<DatabaseType>();
         }
 

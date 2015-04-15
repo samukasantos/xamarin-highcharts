@@ -1,17 +1,22 @@
 ﻿using Xamarin.Forms;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
+using Xamarin.HighCharts.Page.Interfaces;
 using Xamarin.HighCharts.ViewModel;
+using Xamarin.HighCharts.ViewModels.Base.Interfaces;
 using Xamarin.HighCharts.ViewModels.Interfaces;
+using Xamarin.HighCharts.Page.Context;
 
 namespace Xamarin.HighCharts.Page
 {
-    public class LoginUserPage : ContentPage
+    public class LoginUserPage : ContentPage, IActionMessage
     {
 
         #region Constructor
         public LoginUserPage()
         {
-            BindingContext = DependencyResolver.Container.GetService<ILoginViewModel>("navigation", this.Navigation);
+
+            this.BindingContext<ILoginViewModel>();
+
             var layout     = new StackLayout { Padding = 10 };
 
             var label = new Label
@@ -27,11 +32,11 @@ namespace Xamarin.HighCharts.Page
             layout.Children.Add(label);
 
             var username = new Entry { Placeholder = "Username" };
-            username.SetBinding(Entry.TextProperty,  "Name");
+            username.SetBinding(Entry.TextProperty,  "Domain.Name");
             layout.Children.Add(username);
 
             var password = new Entry { Placeholder = "Password", IsPassword = true };
-            password.SetBinding(Entry.TextProperty, "Password");
+            password.SetBinding(Entry.TextProperty, "Domain.Password");
             layout.Children.Add(password);
 
             var button = new Button { Text = "Sign In", TextColor = Color.White };
@@ -39,8 +44,24 @@ namespace Xamarin.HighCharts.Page
 
             layout.Children.Add(button);
             Content = new ScrollView { Content = layout };
+
         }
         
+        #endregion
+
+        #region Methods
+
+        private void Binding() 
+        {
+            var viewModel  = DependencyResolver.Container.GetService<ILoginViewModel>("navigation", this.Navigation);
+
+            if(viewModel != null)
+            {
+                (viewModel as IViewModel).ActionMessage = this;
+                BindingContext = viewModel;
+            }
+        }
+
         #endregion
     }
 }

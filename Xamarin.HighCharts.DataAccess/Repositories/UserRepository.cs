@@ -13,7 +13,7 @@ using Xamarin.HighCharts.Repository.Database.User.Interfaces;
 
 namespace Xamarin.HighCharts.DataAccess.Repositories
 {
-    public class RepositoryUser : Repository<User, int, UserDatabase>, IUserRepository
+    public class UserRepository : Repository<User, int, UserDatabase>, IUserRepository
     {
 
     
@@ -26,7 +26,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
 
             return new UserDatabase
             {
-                Id          = (aggregateRoot as EntityBase<int>).Id,
+                Id          = (aggregateRoot as EntityBase<int, User>).Id,
                 Name        = user.Name,
                 Email       = user.Email,
                 Password    = user.Password,

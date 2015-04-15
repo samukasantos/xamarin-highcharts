@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Xamarin.HighCharts.Repository
 {
-    public abstract class UnitWork : IUnitWork
+    public class UnitWork : IUnitWork
     {
         #region Fields
 

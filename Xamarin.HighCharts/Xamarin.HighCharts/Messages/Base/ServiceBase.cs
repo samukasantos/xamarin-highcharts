@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using Xamarin.HighCharts.Domain;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
+using Xamarin.HighCharts.Messages.Base;
 using Xamarin.HighCharts.WCFHighChartsService;
 
 namespace Xamarin.HighCharts.Base.Messages
@@ -25,9 +26,8 @@ namespace Xamarin.HighCharts.Base.Messages
         {
             get
             {
-                return DependencyResolver.Container.GetService<IWCFHighChartsService>() as WCFHighChartsServiceClient;
+                return WCFService.Instance as WCFHighChartsServiceClient;
             }
-
         }
 
         #endregion

@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.HighCharts.Domain;
+using Xamarin.HighCharts.Page.Interfaces;
 using Xamarin.HighCharts.ViewModels.Base.Interfaces;
 
 namespace Xamarin.HighCharts.ViewModels.Base
@@ -27,6 +28,8 @@ namespace Xamarin.HighCharts.ViewModels.Base
             get { return _inavigation; }
         }
 
+        public IActionMessage ActionMessage { get; set; }
+
         #endregion
 
         #region Constructor
@@ -45,7 +48,7 @@ namespace Xamarin.HighCharts.ViewModels.Base
 
         #region Methods
 
-        protected void RaisedPropertyChanged<T>(Expression<Func<T>> property) 
+        protected void RaisedPropertyChanged<PropertyType>(Expression<Func<PropertyType>> property) 
         {
             var memberExpression = property.Body as MemberExpression;
             var propertyInfo = memberExpression.Member as PropertyInfo;
@@ -57,8 +60,9 @@ namespace Xamarin.HighCharts.ViewModels.Base
             }
         }
 
+        public abstract void ThrowExceptionIfInvalidDomain(T domain);
+
         #endregion
 
-        
     }
 }

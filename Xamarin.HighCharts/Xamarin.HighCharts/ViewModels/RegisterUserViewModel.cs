@@ -5,17 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.HighCharts.Domain;
+using Xamarin.HighCharts.Domain.Interfaces;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
+using Xamarin.HighCharts.InfraStructure.UnitWork;
 using Xamarin.HighCharts.Messages;
 using Xamarin.HighCharts.Page;
 using Xamarin.HighCharts.ViewModels.Base;
+using Xamarin.HighCharts.ViewModels.Base.Interfaces;
 using Xamarin.HighCharts.ViewModels.Interfaces;
 
 namespace Xamarin.HighCharts.ViewModel
 {
-    public class RegisterUserViewModel : ViewModelBase<User>, IRegisterUserViewModel
+    public class RegisterUserViewModel : ViewModelBase<User>, IRegisterUserViewModel, IUserRepositoryService
     {
-
         #region Fields
 
         private User _user;
@@ -38,15 +40,23 @@ namespace Xamarin.HighCharts.ViewModel
             }
         }
 
+
+        public IUserRepository Repository
+        {
+            get { return DependencyResolver.Container.GetService<IUserRepository>(); }
+        }
+
+        public IUnitWork UnitWork
+        {
+            get { return DependencyResolver.Container.GetService<IUnitWork>(); }
+        }
+
         #endregion
 
         #region Constructor
 
         public RegisterUserViewModel(INavigation navigation)
-            :base(navigation)
-        {
-
-        }
+            : base(navigation) { }
 
         #endregion
 
@@ -67,9 +77,45 @@ namespace Xamarin.HighCharts.ViewModel
         protected async Task ExecuteLoginCommand()
         {
             var userService = DependencyResolver.Container.GetService<IUserService>();
-            var result      = userService.AddUser(Domain);
-        } 
+
+            try
+            {
+                ThrowExceptionIfInvalidDomain(Domain);
+
+                //Service
+                var result = userService.AddUser(Domain);
+
+                if (result)
+                {
+                    //Database
+                    Repository.Save(Domain);
+                    UnitWork.Commit();
+
+                    //TODO .: Use internationalization for messages. 
+                    await ActionMessage.DisplayAlert("Success", "User registered successfully.", "Ok");
+                }
+                else
+                {
+                    await ActionMessage.DisplayAlert("Fail", "Service error.", "Ok");
+                }
+            }
+            catch (Exception invalidDomainException)
+            {
+                ActionMessage.DisplayAlert("Error", invalidDomainException.Message, "Ok");
+            }
+        }
+
+        public override void ThrowExceptionIfInvalidDomain(User domain)
+        {
+            var rules = domain.GetBrokenRules( c => c.Email, c => c.Password, c => c.Name);
+            if (rules.Any()) 
+            {
+                foreach (var rule in rules)
+                    throw new Exception(rule.DescriptionRule);
+            }
+        }
 
         #endregion
+       
     }
 }

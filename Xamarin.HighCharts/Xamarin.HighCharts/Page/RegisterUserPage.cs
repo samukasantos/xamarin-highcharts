@@ -2,17 +2,19 @@
 using Xamarin.HighCharts.ViewModel;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.ViewModels.Interfaces;
+using Xamarin.HighCharts.Page.Context;
+using Xamarin.HighCharts.Page.Interfaces;
 
 namespace Xamarin.HighCharts.Page
 {
-    public class RegisterUserPage : ContentPage
+    public class RegisterUserPage : ContentPage, IActionMessage
     {
         #region Constructor
         public RegisterUserPage()
         {
-            BindingContext = DependencyResolver.Container.GetService<IRegisterUserViewModel>("navigation", this.Navigation);
-            var layout     = new StackLayout { Padding = 10 };
+            this.BindingContext<IRegisterUserViewModel>();
 
+            var layout     = new StackLayout { Padding = 10 };
             var label = new Label
             {
 
@@ -26,15 +28,15 @@ namespace Xamarin.HighCharts.Page
             layout.Children.Add(label);
 
             var email = new Entry { Placeholder = "Email" };
-            email.SetBinding(Entry.TextProperty, "Email");
+            email.SetBinding(Entry.TextProperty, "Domain.Email");
             layout.Children.Add(email);
 
             var password = new Entry { Placeholder = "Password", IsPassword = true };
-            password.SetBinding(Entry.TextProperty, "Password");
+            password.SetBinding(Entry.TextProperty, "Domain.Password");
             layout.Children.Add(password);
 
             var name = new Entry { Placeholder = "Name", };
-            name.SetBinding(Entry.TextProperty, "Name");
+            name.SetBinding(Entry.TextProperty, "Domain.Name");
             layout.Children.Add(name);
 
             var button = new Button { Text = "Save", TextColor = Color.White };
