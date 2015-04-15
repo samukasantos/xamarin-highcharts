@@ -7,6 +7,7 @@ using Xamarin.HighCharts.Common.DependencyService.Interfaces;
 using Xamarin.HighCharts.DataAccess.Repositories;
 using Xamarin.HighCharts.Domain;
 using Xamarin.HighCharts.Domain.Interfaces;
+using Xamarin.HighCharts.Page;
 using Xamarin.HighCharts.Repository.Context;
 using Xamarin.HighCharts.Repository.Context.Interface;
 using Xamarin.HighCharts.Repository.Database.User;
@@ -20,9 +21,13 @@ namespace Xamarin.HighCharts
         #region IDependencyContainerService members
         public virtual void ContainerStart()
         {
-            throw new System.NotImplementedException();
+         
         }
 
+        public App()
+        {
+            MainPage = new RootPage();
+        }
         public virtual IList<IDependencyObject> SetDependencies()
         {
             return new List<IDependencyObject> 

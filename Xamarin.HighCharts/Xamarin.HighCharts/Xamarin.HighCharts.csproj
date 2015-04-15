@@ -37,11 +37,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Messages\ServiceRequestBase.cs" />
+    <Compile Include="Page\MenuRootPage\MenuRootIem.cs" />
+    <Compile Include="Page\MenuRootPage\MenuListData.cs" />
+    <Compile Include="Page\MenuRootPage\MenuListView.cs" />
+    <Compile Include="Page\MenuRootPage\MenuPage.cs" />
+    <Compile Include="Page\Navigation\NavigationPage.cs" />
+    <Compile Include="Page\LoginUserPage.cs" />
+    <Compile Include="Page\RootPage.cs" />
+    <Compile Include="Page\ViewPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WCFHighChartsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Views\CustomImageCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLite.Net">
@@ -56,6 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Xamarin.HighCharts.Services.WCFHighChartsService.User.datasource" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.wsdl" />
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Xamarin.HighCharts.Common\Xamarin.HighCharts.Common.csproj">
@@ -80,10 +106,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.HighCharts.Services\Xamarin.HighCharts.Services.csproj">
-      <Project>{6e66fc25-b02a-4e47-ab28-55e0570c5c59}</Project>
-      <Name>Xamarin.HighCharts.Services</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WCFHighChartsService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFHighChartsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
