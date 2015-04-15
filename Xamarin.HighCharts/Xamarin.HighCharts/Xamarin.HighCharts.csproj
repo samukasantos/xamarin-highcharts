@@ -48,11 +48,6 @@
     <Compile Include="Page\RootPage.cs" />
     <Compile Include="Page\ViewPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\WCFHighChartsService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
@@ -80,13 +75,6 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Xamarin.HighCharts.Services.WCFHighChartsService.User.datasource" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.wsdl" />
-    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WCFHighChartsService\WCFHighChartsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Xamarin.HighCharts.Common\Xamarin.HighCharts.Common.csproj">
@@ -112,24 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WCFHighChartsService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WCFHighChartsService\WCFHighChartsService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WCFHighChartsService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WCFHighChartsService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WCFHighChartsService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

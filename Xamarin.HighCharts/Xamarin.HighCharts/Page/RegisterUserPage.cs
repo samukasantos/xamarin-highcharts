@@ -39,11 +39,11 @@ namespace Xamarin.HighCharts.Page
             name.SetBinding(Entry.TextProperty, RegisterUserViewModel.NamePropertyName);
             layout.Children.Add(name);
 
-
+        
 
             var button = new Button { Text = "Save", TextColor = Color.White };
             button.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
-
+           
             layout.Children.Add(button);
 
             Content = new ScrollView { Content = layout };

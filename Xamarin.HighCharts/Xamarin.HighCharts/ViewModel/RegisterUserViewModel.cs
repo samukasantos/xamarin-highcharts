@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.HighCharts.Domain;
 using Xamarin.HighCharts.Messages;
+using Xamarin.HighCharts.Page;
 
 namespace Xamarin.HighCharts.ViewModel
 {
@@ -58,6 +59,9 @@ namespace Xamarin.HighCharts.ViewModel
             user.Name = Name;
             user.Password = Password;
             bool userOK = service.AddUser(user);
+
+          
+            
           
         }
     }
