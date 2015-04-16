@@ -40,7 +40,7 @@ namespace Xamarin.HighCharts.Page
             layout.Children.Add(name);
 
             var button = new Button { Text = "Save", TextColor = Color.White };
-            button.SetBinding(Button.CommandProperty, "LoginCommand");
+            button.SetBinding(Button.CommandProperty, "saveCommand");
 
             layout.Children.Add(button);
 

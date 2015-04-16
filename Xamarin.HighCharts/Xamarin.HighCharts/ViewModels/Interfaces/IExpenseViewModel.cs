@@ -4,8 +4,8 @@ using Xamarin.HighCharts.ViewModels.Base.Interfaces;
 
 namespace Xamarin.HighCharts.ViewModels.Interfaces
 {
-    public interface ILoginViewModel : ICommonCommand, IViewModel
+    public interface IExpenseViewModel : ICommonCommand, IViewModel
     {
-        Command LoginCommand { get; }
+		Command SaveCommand { get; }
     }
 }

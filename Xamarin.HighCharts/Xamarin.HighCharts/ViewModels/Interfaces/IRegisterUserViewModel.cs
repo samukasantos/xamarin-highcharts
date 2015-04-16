@@ -6,5 +6,6 @@ namespace Xamarin.HighCharts.ViewModels.Interfaces
 {
     public interface IRegisterUserViewModel : ICommonCommand, IViewModel
     {
+        Command SaveCommand { get; }
     }
 }

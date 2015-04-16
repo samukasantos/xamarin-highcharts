@@ -21,7 +21,7 @@ namespace Xamarin.HighCharts.ViewModel
         #region Fields
 
         private User _user;
-        private Command _loginCommand;
+        private Command _saveCommand;
 
         #endregion
 
@@ -62,11 +62,11 @@ namespace Xamarin.HighCharts.ViewModel
 
         #region Commands
         
-        public Command LoginCommand
+        public Command SaveCommand
         {
             get
             {
-                return _loginCommand ?? (_loginCommand = new Command(async () => await ExecuteLoginCommand()));
+                return _saveCommand ?? (_saveCommand = new Command(async () => await SaveUserCommand()));
             }
         }
         
@@ -74,7 +74,7 @@ namespace Xamarin.HighCharts.ViewModel
 
         #region Methods
 
-        protected async Task ExecuteLoginCommand()
+        protected async Task SaveUserCommand()
         {
             var userService = DependencyResolver.Container.GetService<IUserService>();
 

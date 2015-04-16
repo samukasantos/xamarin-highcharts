@@ -8,6 +8,7 @@ using Xamarin.HighCharts.ViewModels.Base;
 using Xamarin.HighCharts.ViewModels.Interfaces;
 using System.Linq;
 using System.Linq.Expressions;
+using Xamarin.HighCharts.Page;
 
 namespace Xamarin.HighCharts.ViewModels
 {
@@ -74,7 +75,7 @@ namespace Xamarin.HighCharts.ViewModels
 
                 if (result) 
                 {
-                
+                  await  Navigation.PushAsync(new RootPage());
                 }
             }
             catch (Exception invalidDomainException)

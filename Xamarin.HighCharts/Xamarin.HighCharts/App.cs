@@ -32,7 +32,7 @@ namespace Xamarin.HighCharts
         {
             ContainerStart();
 
-            MainPage = new RootPage();
+            MainPage = new LoginUserPage();
         }
 
         #endregion
