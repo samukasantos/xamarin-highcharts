@@ -34,7 +34,7 @@ namespace Xamarin.HighCharts
         {
             ContainerStart();
 
-            MainPage = new CategoryPage();
+            MainPage = new BindablePickerPageSample();
         }
 
         #endregion

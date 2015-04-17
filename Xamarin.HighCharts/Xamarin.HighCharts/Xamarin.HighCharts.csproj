@@ -41,9 +41,12 @@
     <Compile Include="Messages\Base\WCFService.cs" />
     <Compile Include="Messages\Category\CategoryService.cs" />
     <Compile Include="Messages\Category\ICategoryService.cs" />
+    <Compile Include="Page\BindablePickerPageSample.cs" />
     <Compile Include="Page\CategoryPage.cs" />
     <Compile Include="Page\Context\PageContext.cs" />
     <Compile Include="Page\Interfaces\IActionMessage.cs" />
+    <Compile Include="Utils\CodeValue.cs" />
+    <Compile Include="Utils\CodeValueCollection.cs" />
     <Compile Include="ViewModels\Base\Interfaces\ICategoryRepositoryService.cs" />
     <Compile Include="ViewModels\Base\Interfaces\IUserRepositoryService.cs" />
     <Compile Include="Messages\Base\ServiceBase.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterUserViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="Views\BindablePicker.cs" />
     <Compile Include="Views\CustomImageCell.cs" />
     <Compile Include="ViewModels\ExpenseViewModel.cs" />
     <Compile Include="Page\ExpensePage.cs" />
