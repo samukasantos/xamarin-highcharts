@@ -9,7 +9,7 @@ namespace Xamarin.HighCharts.Messages
     {
         public bool AddCategory(Category user)
         {
-            return false;
+            return true;
         }
     }
 }

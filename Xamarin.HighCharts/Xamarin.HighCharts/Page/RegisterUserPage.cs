@@ -44,9 +44,10 @@ namespace Xamarin.HighCharts.Page
 
             layout.Children.Add(button);
 
-            Content = new ScrollView { Content = layout }; 
+            Content = new ScrollView { Content = layout };
 
-        #endregion
         }
+        #endregion
+        
     }
 }

@@ -34,7 +34,7 @@ namespace Xamarin.HighCharts
         {
             ContainerStart();
 
-            MainPage = new LoginUserPage();
+            MainPage = new CategoryPage();
         }
 
         #endregion
@@ -48,7 +48,7 @@ namespace Xamarin.HighCharts
                 new DependencyObject(typeof(IUser), typeof(User), LifetimeType.Transient),
                 new DependencyObject(typeof(ICategory), typeof(Category), LifetimeType.Transient),
                 new DependencyObject(typeof(IUserRepository), typeof(UserRepository), LifetimeType.Transient),
-                new DependencyObject(typeof(IValueObjectRepository<Category>), typeof(ValueObjectRepository<Category, CategoryDatabase>), LifetimeType.Transient),
+                new DependencyObject(typeof(IValueObjectRepository<Category>), typeof(CategoryRepository), LifetimeType.Transient),
                 new DependencyObject(typeof(IUserDatabase), typeof(UserDatabase), LifetimeType.Transient),
                 new DependencyObject(typeof(ICategoryDatabase), typeof(CategoryDatabase), LifetimeType.Transient),
                 new DependencyObject(typeof(IDBContext), typeof(DBContext<SQLite.Net.SQLiteConnection>)),
@@ -56,6 +56,7 @@ namespace Xamarin.HighCharts
                 new DependencyObject(typeof(ICategoryService), typeof(CategoryService)),
                 new DependencyObject(typeof(IRegisterUserViewModel), typeof(RegisterUserViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
                 new DependencyObject(typeof(ILoginViewModel), typeof(LoginViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
+                new DependencyObject(typeof(ICategoryViewModel), typeof(CategoryViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
                 new DependencyObject(typeof(IContext<SQLite.Net.SQLiteConnection>), DependencyService.Get<IContext<SQLite.Net.SQLiteConnection>>()),
                 new DependencyObject(typeof(IUnitWork), typeof(UnitWork))
             };

@@ -11,14 +11,14 @@ namespace Xamarin.HighCharts.Repository
     {
         #region Methods
 
-        public override IDatabaseModel ConvertToDatabaseType(IValueObject valueObject)
+        public override IDatabaseModel ConvertToDatabaseType(IValueObject valueObject) 
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        public override ValueObjectType FindById(int id)
+        public override ValueObjectType FindById(int id) 
         {
-            throw new System.NotImplementedException();
+            return default(ValueObjectType);
         }
 
         #endregion

@@ -49,19 +49,5 @@ namespace Xamarin.HighCharts.Page
         
         #endregion
 
-        #region Methods
-
-        private void Binding() 
-        {
-            var viewModel  = DependencyResolver.Container.GetService<ILoginViewModel>("navigation", this.Navigation);
-
-            if(viewModel != null)
-            {
-                (viewModel as IViewModel).ActionMessage = this;
-                BindingContext = viewModel;
-            }
-        }
-
-        #endregion
     }
 }

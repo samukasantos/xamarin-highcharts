@@ -23,7 +23,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
 
             return new CategoryDatabase
             {
-                Id = (valueObject as EntityBase<Category>).Id,
+                Id = (valueObject as ValueObject).Id,
                 Description = category.Description
             };
         }
