@@ -17,5 +17,7 @@ namespace Xamarin.HighCharts.Repository.Database.User
         [MaxLength(15)]
         public string Password  { get; set; }
         public bool Transaction { get; set; }
+        [MaxLength(30)]
+        public string UUID { get; set; }
     }
 }

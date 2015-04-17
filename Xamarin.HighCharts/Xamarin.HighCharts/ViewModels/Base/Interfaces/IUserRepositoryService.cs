@@ -1,6 +1,7 @@
 ﻿
-using Xamarin.HighCharts.Domain.Interfaces;
+using Xamarin.HighCharts.Domain.Entities;
 using Xamarin.HighCharts.InfraStructure.UnitWork;
+
 namespace Xamarin.HighCharts.ViewModels.Base.Interfaces
 {
     public interface IUserRepositoryService

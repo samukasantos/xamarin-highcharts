@@ -2,7 +2,7 @@
 
 using Xamarin.HighCharts.InfraStructure.Domain;
 
-namespace Xamarin.HighCharts.Domain
+namespace Xamarin.HighCharts.Domain.Entities
 {
     public static class UserBusinessRules
     {

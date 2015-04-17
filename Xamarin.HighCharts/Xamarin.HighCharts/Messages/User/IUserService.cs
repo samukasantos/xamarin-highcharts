@@ -1,6 +1,6 @@
 ﻿
 
-using Xamarin.HighCharts.Domain;
+using Xamarin.HighCharts.Domain.Entities;
 
 namespace Xamarin.HighCharts.Messages
 {

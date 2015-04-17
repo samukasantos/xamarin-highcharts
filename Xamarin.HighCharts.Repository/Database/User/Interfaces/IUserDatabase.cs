@@ -8,5 +8,6 @@ namespace Xamarin.HighCharts.Repository.Database.User.Interfaces
         string Name { get; set; }
         string Password { get; set; }
         bool Transaction { get; set; }
+        string UUID { get; set; }
     }
 }

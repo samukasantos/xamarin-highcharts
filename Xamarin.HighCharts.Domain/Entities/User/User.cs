@@ -1,15 +1,14 @@
 ﻿
-using Xamarin.HighCharts.Domain.Interfaces;
+using System;
+using System.Linq.Expressions;
+using System.Reflection;
+using Xamarin.HighCharts.Domain.Extensions;
 using Xamarin.HighCharts.InfraStructure.Domain;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
-using Xamarin.HighCharts.Domain.Extensions;
-using System.Linq.Expressions;
-using System;
-using System.Reflection;
 
-namespace Xamarin.HighCharts.Domain
+namespace Xamarin.HighCharts.Domain.Entities
 {
-    public class User : EntityBase<int, User>, IUser, IAggregateRoot
+    public class User : EntityBase<User>, IUser, IAggregateRoot
     {
 
         #region Fields
@@ -80,7 +79,7 @@ namespace Xamarin.HighCharts.Domain
             //Category.ThrowExceptionIfInvalid();
         }
 
-        protected override void ValidateWithCriteria(params Expression<Func<User, string>>[] properties)
+        protected override void ValidateWithCriteria(params Expression<Func<User, object>>[] properties)
         {
             var currentDomain = this.GetType().GetTypeInfo();
 

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using Xamarin.HighCharts.InfraStructure.UnitWork;
@@ -7,7 +8,7 @@ using Xamarin.HighCharts.Repository.Database.Interfaces;
 
 namespace Xamarin.HighCharts.Repository
 {
-    public abstract class Repository<AggregateType, IdTtype, DatabaseType> : IUnitWorkRepository
+    public abstract class Repository<AggregateType, DatabaseType> : IUnitWorkRepository
         where DatabaseType : IDatabaseModel
         where AggregateType : IAggregateRoot
     {
@@ -78,7 +79,7 @@ namespace Xamarin.HighCharts.Repository
         }
 
         public abstract IDatabaseModel ConvertToDatabaseType(IAggregateRoot aggregateRoot);
-        public abstract AggregateType FindById(IdTtype id);
+        public abstract AggregateType FindByToken(string id);
 
         #endregion
 

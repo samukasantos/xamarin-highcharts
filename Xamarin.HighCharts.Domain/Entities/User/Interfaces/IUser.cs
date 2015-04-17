@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xamarin.HighCharts.Domain.Interfaces
+namespace Xamarin.HighCharts.Domain.Entities
 {
     public interface IUser : IDomain
     {

@@ -37,21 +37,23 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="ValueObjects\" />
-    <Folder Include="Expense\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\UtilityRules.cs" />
     <Compile Include="IDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\Interfaces\IUser.cs" />
-    <Compile Include="User\Interfaces\IUserRepository.cs" />
-    <Compile Include="User\User.cs" />
-    <Compile Include="User\UserBusinessRules.cs" />
-    <Compile Include="Expense\Expense.cs" />
-    <Compile Include="Expense\Interface\IExpense.cs" />
-    <Compile Include="Expense\Interface\IExpenseRepository.cs" />
-    <Compile Include="Expense\ExpenseBusinessRules.cs" />
+    <Compile Include="Entities\User\Interfaces\IUser.cs" />
+    <Compile Include="Entities\User\Interfaces\IUserRepository.cs" />
+    <Compile Include="Entities\User\User.cs" />
+    <Compile Include="Entities\User\UserBusinessRules.cs" />
+    <Compile Include="Entities\Expense\Expense.cs" />
+    <Compile Include="Entities\Expense\Interfaces\IExpense.cs" />
+    <Compile Include="Entities\Expense\Interfaces\IExpenseRepository.cs" />
+    <Compile Include="Entities\Expense\ExpenseBusinessRules.cs" />
+    <Compile Include="ValueObjects\Category\Category.cs" />
+    <Compile Include="ValueObjects\Category\CategoryBusinessRules.cs" />
+    <Compile Include="ValueObjects\Category\Interfaces\ICategory.cs" />
+    <Compile Include="ValueObjects\Category\Interfaces\ICategoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.HighCharts.InfraStructure\Xamarin.HighCharts.InfraStructure.csproj">

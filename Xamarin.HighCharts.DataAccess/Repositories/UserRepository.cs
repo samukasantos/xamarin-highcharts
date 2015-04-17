@@ -2,8 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Xamarin.HighCharts.Domain;
-using Xamarin.HighCharts.Domain.Interfaces;
+using Xamarin.HighCharts.Domain.Entities;
 using Xamarin.HighCharts.InfraStructure.Domain;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using Xamarin.HighCharts.Repository;
@@ -13,9 +12,8 @@ using Xamarin.HighCharts.Repository.Database.User.Interfaces;
 
 namespace Xamarin.HighCharts.DataAccess.Repositories
 {
-    public class UserRepository : Repository<User, int, UserDatabase>, IUserRepository
+    public class UserRepository : Repository<User, UserDatabase>, IUserRepository
     {
-
     
         #region Methods
 
@@ -26,7 +24,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
 
             return new UserDatabase
             {
-                Id          = (aggregateRoot as EntityBase<int, User>).Id,
+                Id          = (aggregateRoot as EntityBase<User>).Id,
                 Name        = user.Name,
                 Email       = user.Email,
                 Password    = user.Password,
@@ -34,10 +32,16 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
             };
         }
 
-        public override User FindById(int id)
+        public override User FindByToken(string id)
+        {
+            return FindAll().FirstOrDefault(c => c.UUID == id);
+        }
+
+        public User FindById(int id)
         {
             return FindAll().FirstOrDefault(c => c.Id == id);
-        } 
+        }
+
         #endregion
 
         #region IUserRepository members

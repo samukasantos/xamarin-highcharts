@@ -1,63 +1,57 @@
-﻿using System;
-using System.Linq;
+﻿
+
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.HighCharts.Domain.Entities;
+using Xamarin.Highcharts.Domain.ValueObjects;
+using Xamarin.HighCharts.Domain.ValueObjects;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
-using Xamarin.HighCharts.InfraStructure.UnitWork;
 using Xamarin.HighCharts.Messages;
+using Xamarin.HighCharts.Repository.Database.Interfaces;
 using Xamarin.HighCharts.ViewModels.Base;
 using Xamarin.HighCharts.ViewModels.Base.Interfaces;
 using Xamarin.HighCharts.ViewModels.Interfaces;
 
-namespace Xamarin.HighCharts.ViewModel
+namespace Xamarin.HighCharts.ViewModels
 {
-    public class RegisterUserViewModel : ViewModelBase<User>, IRegisterUserViewModel, IUserRepositoryService
+    public class CategoryViewModel : ViewModelBase<Category>, ICategoryViewModel, ICategoryRepositoryService<Category>
     {
+
         #region Fields
 
-        private User _user;
+        private Category _category;
         private Command _saveCommand;
 
         #endregion
 
-        #region Properties
+        #region Methods
 
-        public override User Domain
+        public override Category Domain
         {
-            get
+            get { return _category; }
+            set 
             {
-                return _user;
-            }
-            set
-            {
-                _user = value;
+                _category = value;
                 RaisedPropertyChanged(() => Domain);
             }
         }
 
-
-        public IUserRepository Repository
+        public IValueObjectRepository<Category> Repository
         {
-            get { return DependencyResolver.Container.GetService<IUserRepository>(); }
-        }
-
-        public IUnitWork UnitWork
-        {
-            get { return DependencyResolver.Container.GetService<IUnitWork>(); }
+            get { return DependencyResolver.Container.GetService<IValueObjectRepository<Category>>(); }
         }
 
         #endregion
 
         #region Constructor
 
-        public RegisterUserViewModel(INavigation navigation)
-            : base(navigation) { }
+        public CategoryViewModel(INavigation navigation)
+			: base(navigation) { }
 
         #endregion
 
         #region Commands
-        
+
         public Command SaveCommand
         {
             get
@@ -65,6 +59,7 @@ namespace Xamarin.HighCharts.ViewModel
                 return _saveCommand ?? (_saveCommand = new Command(async () => await SaveUserCommand()));
             }
         }
+
         
         #endregion
 
@@ -72,23 +67,22 @@ namespace Xamarin.HighCharts.ViewModel
 
         protected async Task SaveUserCommand()
         {
-            var userService = DependencyResolver.Container.GetService<IUserService>();
+            var categoryService = DependencyResolver.Container.GetService<ICategoryService>();
 
             try
             {
                 ThrowExceptionIfInvalidDomain(Domain);
 
                 //Service
-                var result = userService.AddUser(Domain);
+                var result = categoryService.AddCategory(Domain);
 
                 if (result)
                 {
                     //Database
                     Repository.Save(Domain);
-                    UnitWork.Commit();
 
                     //TODO .: Use internationalization for messages. 
-                    await ActionMessage.DisplayAlert("Success", "User registered successfully.", "Ok");
+                    await ActionMessage.DisplayAlert("Success", "Category registered successfully.", "Ok");
                 }
                 else
                 {
@@ -101,17 +95,14 @@ namespace Xamarin.HighCharts.ViewModel
             }
         }
 
-        public override void ThrowExceptionIfInvalidDomain(User domain)
+        public override void ThrowExceptionIfInvalidDomain(Category domain)
         {
-            var rules = domain.GetBrokenRules( c => c.Email, c => c.Password, c => c.Name);
-            if (rules.Any()) 
-            {
-                foreach (var rule in rules)
-                    throw new Exception(rule.DescriptionRule);
-            }
+            domain.ThrowExceptionIfInvalid();
         }
 
         #endregion
-       
+
+
+
     }
 }

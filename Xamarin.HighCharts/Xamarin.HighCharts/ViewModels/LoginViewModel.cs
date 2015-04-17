@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.HighCharts.Domain;
+using Xamarin.HighCharts.Domain.Entities;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.Messages;
+using Xamarin.HighCharts.Page;
 using Xamarin.HighCharts.ViewModels.Base;
 using Xamarin.HighCharts.ViewModels.Interfaces;
-using System.Linq;
-using System.Linq.Expressions;
-using Xamarin.HighCharts.Page;
 
 namespace Xamarin.HighCharts.ViewModels
 {

@@ -39,8 +39,11 @@
     <Compile Include="App.cs" />
     <Compile Include="Messages\Base\AsyncCallStatus.cs" />
     <Compile Include="Messages\Base\WCFService.cs" />
+    <Compile Include="Messages\Category\CategoryService.cs" />
+    <Compile Include="Messages\Category\ICategoryService.cs" />
     <Compile Include="Page\Context\PageContext.cs" />
     <Compile Include="Page\Interfaces\IActionMessage.cs" />
+    <Compile Include="ViewModels\Base\Interfaces\ICategoryRepositoryService.cs" />
     <Compile Include="ViewModels\Base\Interfaces\IUserRepositoryService.cs" />
     <Compile Include="Messages\Base\ServiceBase.cs" />
     <Compile Include="Messages\User\IUserService.cs" />
@@ -60,6 +63,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Base\Interfaces\IViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\ICategoryViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\ICommonCommand.cs" />
     <Compile Include="ViewModels\Interfaces\ILoginViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IRegisterUserViewModel.cs" />
@@ -76,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Messages\Expense\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.Unity">

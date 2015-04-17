@@ -47,6 +47,8 @@
     <Compile Include="Domain\Interfaces\IAggregateRoot.cs" />
     <Compile Include="Domain\Interfaces\IReadableRepository.cs" />
     <Compile Include="Domain\Interfaces\IRepository.cs" />
+    <Compile Include="Domain\Interfaces\IValueObject.cs" />
+    <Compile Include="Domain\Interfaces\IValueObjectRepository.cs" />
     <Compile Include="Domain\ValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitWork\IUnitWork.cs" />

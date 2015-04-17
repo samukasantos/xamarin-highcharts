@@ -1,8 +1,8 @@
 ﻿
 using Newtonsoft.Json;
-using Xamarin.HighCharts.Domain;
-using Xamarin.HighCharts.Base.Messages;
 using System;
+using Xamarin.HighCharts.Base.Messages;
+using Xamarin.HighCharts.Domain.Entities;
 using Xamarin.HighCharts.Messages.Base;
 using Xamarin.HighCharts.WCFHighChartsService;
 

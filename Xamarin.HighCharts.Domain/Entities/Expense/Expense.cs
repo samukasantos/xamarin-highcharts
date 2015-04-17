@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.HighCharts.Domain.Expense.Interface;
-using Xamarin.HighCharts.InfraStructure.Domain;
-using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using System.Linq.Expressions;
 using System.Reflection;
+using Xamarin.HighCharts.InfraStructure.Domain;
+using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 
-namespace Xamarin.HighCharts.Domain.Expense
+namespace Xamarin.HighCharts.Domain.Entities
 {
-    public class Expense : EntityBase<int, Expense>, IExpense, IAggregateRoot
+    public class Expense : EntityBase<Expense>, IExpense, IAggregateRoot
     {
 
-
         #region Fields
+
         private string _description;
-        private string _category;
+        private int _category;
         private string _date;
         private string _value;
 
@@ -30,23 +25,17 @@ namespace Xamarin.HighCharts.Domain.Expense
 			set { _description = value;   RaisedPropertyChanged(()=> Description); }
         }
 
-
-
-        public string Category
+        public int Category
         {
             get { return _category; }
 			set { _category = value; RaisedPropertyChanged(()=> Category); }
         }
-
-
 
         public string Value
         {
             get { return _value; }
 			set { _value = value;RaisedPropertyChanged(()=> Value);  }
         }
-
-
 
         public string Date
         {
@@ -59,17 +48,13 @@ namespace Xamarin.HighCharts.Domain.Expense
 		#region Overridable
 		protected override void Validate()
 		{
-			if (string.IsNullOrEmpty (Description) || string.IsNullOrEmpty (Category) || string.IsNullOrEmpty (Value) || string.IsNullOrEmpty (Date))
+			if (string.IsNullOrEmpty (Description) || string.IsNullOrEmpty (Value) || string.IsNullOrEmpty (Date))
 				AddRule (ExpenseBusinessRules.Required);
-		
-
-
-
 		
 			//Category.ThrowExceptionIfInvalid();
 		}
 
-		protected override void ValidateWithCriteria (params Expression<Func<Expense, string>>[] properties)
+		protected override void ValidateWithCriteria (params Expression<Func<Expense, object>>[] properties)
 		{
 			var currentDomain = this.GetType().GetTypeInfo();
 

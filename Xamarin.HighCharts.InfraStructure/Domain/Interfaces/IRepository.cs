@@ -1,7 +1,7 @@
 ﻿
 namespace Xamarin.HighCharts.InfraStructure.Domain.Interfaces
 {
-    public interface IRepository<AggregateType, IdType> : IReadableRepository<AggregateType, IdType>
+    public interface IRepository<AggregateType> : IReadableRepository<AggregateType>
         where AggregateType : IAggregateRoot
     {
         void Update(AggregateType aggregate);

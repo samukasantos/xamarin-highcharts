@@ -7,26 +7,28 @@ using System.Reflection;
 
 namespace Xamarin.HighCharts.InfraStructure.Domain
 {
-    public abstract class EntityBase<IdType, DomainType> : INotifyPropertyChanged
+    public abstract class EntityBase<DomainType> : INotifyPropertyChanged
     {
         #region Fields
 
-        private IdType _idType;
+        private int _id;
         private List<BusinessRules> _brokenRules;
 
         #endregion
 
         #region Properties
 
-        public IdType Id 
+        public string UUID { get; private set; }
+        public int Id
         {
-            get { return _idType; }
-            set 
+            get { return _id; }
+            set
             {
-                _idType = value;
+                _id = value;
                 RaisedPropertyChanged(() => Id);
             }
         }
+
 
         #endregion
 
@@ -35,6 +37,7 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
         public EntityBase()
         {
             _brokenRules = new List<BusinessRules>();
+            UUID = Guid.NewGuid().ToString(); 
         }
 
         #endregion
@@ -49,20 +52,20 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
 
         public override bool Equals(object entity)
         {
-            return entity != null && entity is EntityBase<IdType, DomainType>
-                && this == (EntityBase<IdType, DomainType>)entity;
+            return entity != null && entity is EntityBase<DomainType>
+                && this == (EntityBase<DomainType>)entity;
         }
 
         public override int GetHashCode()
         {
-            return this.Id.GetHashCode();
+            return this.GetHashCode();
         }
 
         #endregion
 
         #region Operators
 
-        public static bool operator ==(EntityBase<IdType, DomainType> entityLeft, EntityBase<IdType, DomainType> entityRight)
+        public static bool operator ==(EntityBase<DomainType> entityLeft, EntityBase<DomainType> entityRight)
         {
             if ((object)entityLeft == null && (object)entityRight == null)
             {
@@ -81,7 +84,7 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
             return false;
         }
 
-        public static bool operator !=(EntityBase<IdType, DomainType> entityLeft, EntityBase<IdType, DomainType> entityRight)
+        public static bool operator !=(EntityBase<DomainType> entityLeft, EntityBase<DomainType> entityRight)
         {
             return (!(entityLeft == entityRight));
         }
@@ -103,7 +106,7 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
         }
 
         protected abstract void Validate();
-        protected abstract void ValidateWithCriteria(params Expression<Func<DomainType, string>>[] properties);
+        protected abstract void ValidateWithCriteria(params Expression<Func<DomainType, object>>[] properties);
 
         protected void AddRule(BusinessRules rule)
         {
@@ -117,7 +120,7 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
             return _brokenRules;
         }
 
-        public IEnumerable<BusinessRules> GetBrokenRules(params Expression<Func<DomainType, string>>[] properties)
+        public IEnumerable<BusinessRules> GetBrokenRules(params Expression<Func<DomainType, object>>[] properties)
         {
             _brokenRules.Clear();
             ValidateWithCriteria(properties);

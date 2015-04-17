@@ -46,12 +46,19 @@
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Context\Interface\IContext.cs" />
     <Compile Include="Context\Interface\IDBContext.cs" />
+    <Compile Include="Database\Category\CategoryDatabase.cs" />
+    <Compile Include="Database\Category\Interfaces\ICategoryDatabase.cs" />
+    <Compile Include="Database\Expense\ExpenseDatabase.cs" />
+    <Compile Include="Database\Expense\Interfaces\IExpenseDatabase.cs" />
     <Compile Include="Database\Interfaces\IDatabaseModel.cs" />
     <Compile Include="Database\User\Interfaces\IUserDatabase.cs" />
     <Compile Include="Database\User\UserDatabase.cs" />
+    <Compile Include="Database\Interfaces\IValueObjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="UnitWork.cs" />
+    <Compile Include="ValueObjectBase.cs" />
+    <Compile Include="ValueObjectRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
