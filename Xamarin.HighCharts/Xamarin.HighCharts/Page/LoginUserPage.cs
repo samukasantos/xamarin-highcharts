@@ -39,7 +39,7 @@ namespace Xamarin.HighCharts.Page
             password.SetBinding(Entry.TextProperty, "Domain.Password");
             layout.Children.Add(password);
 
-            var button = new Button { Text = "Sign In", TextColor = Color.White };
+			var button = new Button { Text = "Login", TextColor = Color.Black };
             button.SetBinding(Button.CommandProperty, "LoginCommand");
 
             layout.Children.Add(button);

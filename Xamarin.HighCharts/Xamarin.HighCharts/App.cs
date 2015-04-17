@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Highcharts.Domain.ValueObjects;
-using Xamarin.HighCharts.DataAccess.Repositories;
 using Xamarin.HighCharts.Domain.Entities;
 using Xamarin.HighCharts.Domain.ValueObjects;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
@@ -22,6 +21,7 @@ using Xamarin.HighCharts.Repository.Database.User.Interfaces;
 using Xamarin.HighCharts.ViewModel;
 using Xamarin.HighCharts.ViewModels;
 using Xamarin.HighCharts.ViewModels.Interfaces;
+using Xamarin.HighCharts.DataAccess.Repositories;
 
 namespace Xamarin.HighCharts
 {
@@ -34,7 +34,7 @@ namespace Xamarin.HighCharts
         {
             ContainerStart();
 
-            MainPage = new BindablePickerPageSample();
+			MainPage = new RootPage();
         }
 
         #endregion
@@ -47,16 +47,21 @@ namespace Xamarin.HighCharts
             {
                 new DependencyObject(typeof(IUser), typeof(User), LifetimeType.Transient),
                 new DependencyObject(typeof(ICategory), typeof(Category), LifetimeType.Transient),
+				new DependencyObject(typeof(IExpense), typeof(Expense), LifetimeType.Transient),
                 new DependencyObject(typeof(IUserRepository), typeof(UserRepository), LifetimeType.Transient),
+				new DependencyObject(typeof(IExpenseRepository), typeof(ExpenseRepository), LifetimeType.Transient),
                 new DependencyObject(typeof(IValueObjectRepository<Category>), typeof(CategoryRepository), LifetimeType.Transient),
                 new DependencyObject(typeof(IUserDatabase), typeof(UserDatabase), LifetimeType.Transient),
                 new DependencyObject(typeof(ICategoryDatabase), typeof(CategoryDatabase), LifetimeType.Transient),
                 new DependencyObject(typeof(IDBContext), typeof(DBContext<SQLite.Net.SQLiteConnection>)),
                 new DependencyObject(typeof(IUserService), typeof(UserService)),
                 new DependencyObject(typeof(ICategoryService), typeof(CategoryService)),
+				new DependencyObject(typeof(IExpenseService), typeof(ExpenseService)),
                 new DependencyObject(typeof(IRegisterUserViewModel), typeof(RegisterUserViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
                 new DependencyObject(typeof(ILoginViewModel), typeof(LoginViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
                 new DependencyObject(typeof(ICategoryViewModel), typeof(CategoryViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
+				new DependencyObject(typeof(IExpenseViewModel), typeof(ExpenseViewModel), LifetimeType.Transient, null, null, new object[]{ typeof(INavigation) }),
+
                 new DependencyObject(typeof(IContext<SQLite.Net.SQLiteConnection>), DependencyService.Get<IContext<SQLite.Net.SQLiteConnection>>()),
                 new DependencyObject(typeof(IUnitWork), typeof(UnitWork))
             };

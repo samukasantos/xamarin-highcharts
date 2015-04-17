@@ -18,10 +18,25 @@ namespace Xamarin.HighCharts.Page.MenuRootPage
 
             this.Add(new MenuRootIem()
             {
-                Title = "Register User",
+                Title = "Registrar Usuário",
                 //   IconSource = "contacts.png",
                 TargetType = typeof(RegisterUserPage)
             });
+
+			this.Add(new MenuRootIem()
+				{
+					Title = "Cadastrar Categoria",
+					//   IconSource = "contacts.png",
+					TargetType = typeof(CategoryPage)
+				});
+
+			this.Add(new MenuRootIem()
+				{
+					Title = "Despesa",
+					//   IconSource = "contacts.png",
+					TargetType = typeof(ExpensePage)
+				});
+			
             
         #endregion
 

@@ -51,7 +51,7 @@ namespace Xamarin.HighCharts.Domain.Entities
 			if (string.IsNullOrEmpty (Description) || string.IsNullOrEmpty (Value) || string.IsNullOrEmpty (Date))
 				AddRule (ExpenseBusinessRules.Required);
 		
-			//Category.ThrowExceptionIfInvalid();
+
 		}
 
 		protected override void ValidateWithCriteria (params Expression<Func<Expense, object>>[] properties)

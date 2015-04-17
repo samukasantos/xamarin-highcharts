@@ -36,6 +36,7 @@ namespace Xamarin.HighCharts.Page
             Detail = new CustomNavigationPage(displayPage)
             {
                 BarBackgroundColor = backGroundBolor,
+				Title = displayPage.Title
             };
             IsPresented = false;
         }

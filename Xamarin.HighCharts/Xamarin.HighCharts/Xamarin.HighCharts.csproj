@@ -103,6 +103,10 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.1.4.1.6349\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -117,10 +121,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.HighCharts.DataAccess\Xamarin.HighCharts.DataAccess.csproj">
-      <Project>{973837B4-11A5-4B92-A2CE-3F4D21330520}</Project>
-      <Name>Xamarin.HighCharts.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Xamarin.HighCharts.Domain\Xamarin.HighCharts.Domain.csproj">
       <Project>{BE1CD0E0-C769-4344-AAC9-430062394289}</Project>
       <Name>Xamarin.HighCharts.Domain</Name>
@@ -133,6 +133,10 @@
       <Project>{9AF6EDAA-41CA-417C-85F6-6332C8FF774E}</Project>
       <Name>Xamarin.HighCharts.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.HighCharts.DataAccess\Xamarin.HighCharts.DataAccess.csproj">
+      <Project>{973837B4-11A5-4B92-A2CE-3F4D21330520}</Project>
+      <Name>Xamarin.HighCharts.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -142,12 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WCFHighChartsService\WCFHighChartsService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WCFHighChartsService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WCFHighChartsService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WCFHighChartsService\Reference.svcmap">
