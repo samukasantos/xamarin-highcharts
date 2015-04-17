@@ -1,1 +1,1 @@
-# Xamarin-Highcharts
+# Xamarin-HighCharts
