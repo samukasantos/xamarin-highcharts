@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Highcharts.Domain.ValueObjects;
 
 namespace Xamarin.HighCharts.Domain.Entities
 {
@@ -10,9 +7,10 @@ namespace Xamarin.HighCharts.Domain.Entities
     {
 
         string Description{ get; set; }
-        int Category{ get; set; }
+        ICategory Category{ get; set; }
         string Value{ get; set; }
-        string Date{ get; set; }
+        DateTime Date{ get; set; }
+        string UUID { get; set; }
        
     }
 }

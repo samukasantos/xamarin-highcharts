@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 using Xamarin.HighCharts.InfraStructure.UnitWork;

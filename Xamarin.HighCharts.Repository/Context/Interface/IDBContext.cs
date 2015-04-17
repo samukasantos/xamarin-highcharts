@@ -13,6 +13,7 @@ namespace Xamarin.HighCharts.Repository.Context.Interface
         void Update(IDatabaseModel databaseModel);
         void Delete(IDatabaseModel databaseModel);
         IEnumerable<T> FindAll<T>() where T : IDatabaseModel, new();
-
+        List<DatabaseComplexType> ExecuteCrossQuery<DatabaseComplexType>(string query, params object[] parameters)
+            where DatabaseComplexType : new();
     }
 }

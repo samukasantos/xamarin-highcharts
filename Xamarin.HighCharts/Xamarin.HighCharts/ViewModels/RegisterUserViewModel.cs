@@ -89,6 +89,7 @@ namespace Xamarin.HighCharts.ViewModel
 
                     //TODO .: Use internationalization for messages. 
                     await ActionMessage.DisplayAlert("Success", "User registered successfully.", "Ok");
+                    Renew();
                 }
                 else
                 {

@@ -13,12 +13,24 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
 
         private int _id;
         private List<BusinessRules> _brokenRules;
+        private string _uuid;
 
         #endregion
 
         #region Properties
 
-        public string UUID { get; private set; }
+        public string UUID 
+        {
+            get 
+            {
+                return _id == 0 ? Guid.NewGuid().ToString() : _uuid;  
+            }
+            set 
+            {
+                if (_id != 0)
+                    _uuid = value;
+            }
+        }
         public int Id
         {
             get { return _id; }
@@ -37,7 +49,6 @@ namespace Xamarin.HighCharts.InfraStructure.Domain
         public EntityBase()
         {
             _brokenRules = new List<BusinessRules>();
-            UUID = Guid.NewGuid().ToString(); 
         }
 
         #endregion

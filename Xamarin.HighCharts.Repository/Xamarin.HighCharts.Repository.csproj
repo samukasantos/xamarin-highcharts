@@ -48,7 +48,9 @@
     <Compile Include="Context\Interface\IDBContext.cs" />
     <Compile Include="Database\Category\CategoryDatabase.cs" />
     <Compile Include="Database\Category\Interfaces\ICategoryDatabase.cs" />
+    <Compile Include="Database\Expense\ExpenseComposite.cs" />
     <Compile Include="Database\Expense\ExpenseDatabase.cs" />
+    <Compile Include="Database\Expense\Interfaces\IExpenseComposite.cs" />
     <Compile Include="Database\Expense\Interfaces\IExpenseDatabase.cs" />
     <Compile Include="Database\Interfaces\IDatabaseModel.cs" />
     <Compile Include="Database\User\Interfaces\IUserDatabase.cs" />

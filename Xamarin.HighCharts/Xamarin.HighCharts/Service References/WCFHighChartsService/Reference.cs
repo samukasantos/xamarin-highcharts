@@ -39,6 +39,21 @@ namespace Xamarin.HighCharts.WCFHighChartsService {
         System.IAsyncResult BeginValidateUser(string Login, string Password, System.AsyncCallback callback, object asyncState);
         
         bool EndValidateUser(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IWCFHighChartsService/AddExpense", ReplyAction="http://tempuri.org/IWCFHighChartsService/AddExpenseResponse")]
+        System.IAsyncResult BeginAddExpense(string expense, System.AsyncCallback callback, object asyncState);
+        
+        bool EndAddExpense(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IWCFHighChartsService/DeleteExpense", ReplyAction="http://tempuri.org/IWCFHighChartsService/DeleteExpenseResponse")]
+        System.IAsyncResult BeginDeleteExpense(string expense, System.AsyncCallback callback, object asyncState);
+        
+        bool EndDeleteExpense(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IWCFHighChartsService/UpdateExpense", ReplyAction="http://tempuri.org/IWCFHighChartsService/UpdateExpenseResponse")]
+        System.IAsyncResult BeginUpdateExpense(string expense, System.AsyncCallback callback, object asyncState);
+        
+        bool EndUpdateExpense(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -142,6 +157,63 @@ namespace Xamarin.HighCharts.WCFHighChartsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AddExpenseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public AddExpenseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DeleteExpenseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public DeleteExpenseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateExpenseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdateExpenseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class WCFHighChartsServiceClient : System.ServiceModel.ClientBase<Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService>, Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService {
         
         private BeginOperationDelegate onBeginAddUserDelegate;
@@ -173,6 +245,24 @@ namespace Xamarin.HighCharts.WCFHighChartsService {
         private EndOperationDelegate onEndValidateUserDelegate;
         
         private System.Threading.SendOrPostCallback onValidateUserCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginAddExpenseDelegate;
+        
+        private EndOperationDelegate onEndAddExpenseDelegate;
+        
+        private System.Threading.SendOrPostCallback onAddExpenseCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDeleteExpenseDelegate;
+        
+        private EndOperationDelegate onEndDeleteExpenseDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteExpenseCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateExpenseDelegate;
+        
+        private EndOperationDelegate onEndUpdateExpenseDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateExpenseCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -237,6 +327,12 @@ namespace Xamarin.HighCharts.WCFHighChartsService {
         public event System.EventHandler<GetUsersCompletedEventArgs> GetUsersCompleted;
         
         public event System.EventHandler<ValidateUserCompletedEventArgs> ValidateUserCompleted;
+        
+        public event System.EventHandler<AddExpenseCompletedEventArgs> AddExpenseCompleted;
+        
+        public event System.EventHandler<DeleteExpenseCompletedEventArgs> DeleteExpenseCompleted;
+        
+        public event System.EventHandler<UpdateExpenseCompletedEventArgs> UpdateExpenseCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -472,6 +568,144 @@ namespace Xamarin.HighCharts.WCFHighChartsService {
                         Password}, this.onEndValidateUserDelegate, this.onValidateUserCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService.BeginAddExpense(string expense, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAddExpense(expense, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService.EndAddExpense(System.IAsyncResult result) {
+            return base.Channel.EndAddExpense(result);
+        }
+        
+        private System.IAsyncResult OnBeginAddExpense(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string expense = ((string)(inValues[0]));
+            return ((Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService)(this)).BeginAddExpense(expense, callback, asyncState);
+        }
+        
+        private object[] OnEndAddExpense(System.IAsyncResult result) {
+            bool retVal = ((Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService)(this)).EndAddExpense(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnAddExpenseCompleted(object state) {
+            if ((this.AddExpenseCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.AddExpenseCompleted(this, new AddExpenseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void AddExpenseAsync(string expense) {
+            this.AddExpenseAsync(expense, null);
+        }
+        
+        public void AddExpenseAsync(string expense, object userState) {
+            if ((this.onBeginAddExpenseDelegate == null)) {
+                this.onBeginAddExpenseDelegate = new BeginOperationDelegate(this.OnBeginAddExpense);
+            }
+            if ((this.onEndAddExpenseDelegate == null)) {
+                this.onEndAddExpenseDelegate = new EndOperationDelegate(this.OnEndAddExpense);
+            }
+            if ((this.onAddExpenseCompletedDelegate == null)) {
+                this.onAddExpenseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddExpenseCompleted);
+            }
+            base.InvokeAsync(this.onBeginAddExpenseDelegate, new object[] {
+                        expense}, this.onEndAddExpenseDelegate, this.onAddExpenseCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService.BeginDeleteExpense(string expense, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteExpense(expense, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService.EndDeleteExpense(System.IAsyncResult result) {
+            return base.Channel.EndDeleteExpense(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteExpense(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string expense = ((string)(inValues[0]));
+            return ((Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService)(this)).BeginDeleteExpense(expense, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteExpense(System.IAsyncResult result) {
+            bool retVal = ((Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService)(this)).EndDeleteExpense(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnDeleteExpenseCompleted(object state) {
+            if ((this.DeleteExpenseCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteExpenseCompleted(this, new DeleteExpenseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteExpenseAsync(string expense) {
+            this.DeleteExpenseAsync(expense, null);
+        }
+        
+        public void DeleteExpenseAsync(string expense, object userState) {
+            if ((this.onBeginDeleteExpenseDelegate == null)) {
+                this.onBeginDeleteExpenseDelegate = new BeginOperationDelegate(this.OnBeginDeleteExpense);
+            }
+            if ((this.onEndDeleteExpenseDelegate == null)) {
+                this.onEndDeleteExpenseDelegate = new EndOperationDelegate(this.OnEndDeleteExpense);
+            }
+            if ((this.onDeleteExpenseCompletedDelegate == null)) {
+                this.onDeleteExpenseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteExpenseCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteExpenseDelegate, new object[] {
+                        expense}, this.onEndDeleteExpenseDelegate, this.onDeleteExpenseCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService.BeginUpdateExpense(string expense, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateExpense(expense, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService.EndUpdateExpense(System.IAsyncResult result) {
+            return base.Channel.EndUpdateExpense(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateExpense(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string expense = ((string)(inValues[0]));
+            return ((Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService)(this)).BeginUpdateExpense(expense, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateExpense(System.IAsyncResult result) {
+            bool retVal = ((Xamarin.HighCharts.WCFHighChartsService.IWCFHighChartsService)(this)).EndUpdateExpense(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdateExpenseCompleted(object state) {
+            if ((this.UpdateExpenseCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateExpenseCompleted(this, new UpdateExpenseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateExpenseAsync(string expense) {
+            this.UpdateExpenseAsync(expense, null);
+        }
+        
+        public void UpdateExpenseAsync(string expense, object userState) {
+            if ((this.onBeginUpdateExpenseDelegate == null)) {
+                this.onBeginUpdateExpenseDelegate = new BeginOperationDelegate(this.OnBeginUpdateExpense);
+            }
+            if ((this.onEndUpdateExpenseDelegate == null)) {
+                this.onEndUpdateExpenseDelegate = new EndOperationDelegate(this.OnEndUpdateExpense);
+            }
+            if ((this.onUpdateExpenseCompletedDelegate == null)) {
+                this.onUpdateExpenseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateExpenseCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateExpenseDelegate, new object[] {
+                        expense}, this.onEndUpdateExpenseDelegate, this.onUpdateExpenseCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -635,6 +869,45 @@ namespace Xamarin.HighCharts.WCFHighChartsService {
             public bool EndValidateUser(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 bool _result = ((bool)(base.EndInvoke("ValidateUser", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginAddExpense(string expense, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = expense;
+                System.IAsyncResult _result = base.BeginInvoke("AddExpense", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndAddExpense(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("AddExpense", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginDeleteExpense(string expense, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = expense;
+                System.IAsyncResult _result = base.BeginInvoke("DeleteExpense", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndDeleteExpense(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("DeleteExpense", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginUpdateExpense(string expense, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = expense;
+                System.IAsyncResult _result = base.BeginInvoke("UpdateExpense", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndUpdateExpense(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("UpdateExpense", _args, result)));
                 return _result;
             }
         }

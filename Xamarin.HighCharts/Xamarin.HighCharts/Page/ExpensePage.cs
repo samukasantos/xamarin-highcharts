@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.HighCharts.ViewModels.Interfaces;
 using Xamarin.HighCharts.Page.Interfaces;
 using Xamarin.HighCharts.Page.Context;
+using Xamarin.HighCharts.Views;
 
 namespace Xamarin.HighCharts.Page
 {
@@ -30,20 +31,33 @@ namespace Xamarin.HighCharts.Page
 
 			layout.Children.Add(label);
 
-			var description = new Entry { Placeholder = "Descrição" };
+            var labelCategory = new Label { Text = "Category:", FontSize = 12 };
+            layout.Children.Add(labelCategory);
+
+            var bindablePicker = new BindablePicker();
+            bindablePicker.SetBinding(BindablePicker.ItemsSourceProperty, "Categories");
+            bindablePicker.SetBinding(BindablePicker.CommandProperty, "CategoriesCommand");
+            bindablePicker.SetBinding(BindablePicker.IsEnabledProperty, "CategoryVisibility");
+            layout.Children.Add(bindablePicker);
+
+			var description = new Entry { Placeholder = "Description" };
 			description.SetBinding(Entry.TextProperty, "Domain.Description");
 			layout.Children.Add(description);
 
-			var value = new Entry { Placeholder = "Valor", IsPassword = true };
+			var value = new Entry { Placeholder = "Value" };
 			value.SetBinding(Entry.TextProperty, "Domain.Value");
 			layout.Children.Add(value);
 
-			var date = new Entry { Placeholder = "Data", };
-			date.SetBinding(Entry.TextProperty, "Domain.Data");
+            var labelDate = new Label { Text = "Cost Date:", FontSize = 12 };
+            layout.Children.Add(labelDate);
+
+            //var date = new Entry { Placeholder = "Date", };
+            var date = new DatePicker { Format = "D" };
+            date.SetBinding(DatePicker.DateProperty, "Domain.Date");
 			layout.Children.Add(date);
 
 			var button = new Button { Text = "Salvar", TextColor = Color.Black };
-			button.SetBinding(Button.CommandProperty, "saveCommand");
+			button.SetBinding(Button.CommandProperty, "SaveCommand");
 
 			layout.Children.Add(button);
 

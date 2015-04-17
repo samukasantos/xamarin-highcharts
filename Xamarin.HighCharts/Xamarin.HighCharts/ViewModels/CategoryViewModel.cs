@@ -56,7 +56,7 @@ namespace Xamarin.HighCharts.ViewModels
         {
             get
             {
-                return _saveCommand ?? (_saveCommand = new Command(async () => await SaveUserCommand()));
+                return _saveCommand ?? (_saveCommand = new Command(async () => await SaveCategoryCommand()));
             }
         }
 
@@ -65,7 +65,7 @@ namespace Xamarin.HighCharts.ViewModels
 
         #region Methods
 
-        protected async Task SaveUserCommand()
+        protected async Task SaveCategoryCommand()
         {
             var categoryService = DependencyResolver.Container.GetService<ICategoryService>();
 
@@ -83,6 +83,7 @@ namespace Xamarin.HighCharts.ViewModels
 
                     //TODO .: Use internationalization for messages. 
                     await ActionMessage.DisplayAlert("Success", "Category registered successfully.", "Ok");
+                    Renew();
                 }
                 else
                 {

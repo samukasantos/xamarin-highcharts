@@ -98,10 +98,22 @@ namespace Xamarin.HighCharts.Repository.Context
             #endregion
         }
 
+        public List<DatabaseComplexType> ExecuteCrossQuery<DatabaseComplexType>(string query, params object[] parameters)
+            where DatabaseComplexType : new()
+        {
+            #region SQLite-Net
+
+            if (Connection != null)
+            {
+                var connection = Connection.GetConnection() as SQLite.Net.SQLiteConnection;
+                return connection.Query<DatabaseComplexType>(query, parameters);
+            }
+            return null;
+
+            #endregion
+        }
+
         #endregion
 
-
-
-        
     }
 }

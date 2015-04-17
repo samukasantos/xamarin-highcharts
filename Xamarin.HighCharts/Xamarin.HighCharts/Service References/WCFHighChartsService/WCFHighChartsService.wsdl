@@ -36,6 +36,24 @@
   <wsdl:message name="IWCFHighChartsService_ValidateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_AddExpense_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddExpense" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_AddExpense_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddExpenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_DeleteExpense_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpense" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_DeleteExpense_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_UpdateExpense_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExpense" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_UpdateExpense_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExpenseResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWCFHighChartsService">
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/AddUser" message="tns:IWCFHighChartsService_AddUser_InputMessage" />
@@ -56,6 +74,18 @@
     <wsdl:operation name="ValidateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/ValidateUser" message="tns:IWCFHighChartsService_ValidateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/ValidateUserResponse" message="tns:IWCFHighChartsService_ValidateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddExpense">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/AddExpense" message="tns:IWCFHighChartsService_AddExpense_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/AddExpenseResponse" message="tns:IWCFHighChartsService_AddExpense_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpense">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/DeleteExpense" message="tns:IWCFHighChartsService_DeleteExpense_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/DeleteExpenseResponse" message="tns:IWCFHighChartsService_DeleteExpense_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpense">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/UpdateExpense" message="tns:IWCFHighChartsService_UpdateExpense_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/UpdateExpenseResponse" message="tns:IWCFHighChartsService_UpdateExpense_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWCFHighChartsService" type="tns:IWCFHighChartsService">
@@ -98,6 +128,33 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateUser">
       <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddExpense">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/AddExpense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpense">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/DeleteExpense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExpense">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/UpdateExpense" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

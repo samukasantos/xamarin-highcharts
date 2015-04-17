@@ -22,7 +22,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
             var user = aggregateRoot as IUser;
             if (user == null) return null;
 
-            return new UserDatabase
+            var userDB = new UserDatabase
             {
                 Id          = (aggregateRoot as EntityBase<User>).Id,
                 Name        = user.Name,
@@ -30,6 +30,8 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
                 Password    = user.Password,
                 Transaction = user.Transaction
             };
+            userDB.UUID = user.UUID;
+            return userDB;
         }
 
         public override User FindByToken(string id)
@@ -61,7 +63,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
             var current = databaseModel as IUserDatabase;
             if (current == null) return null;
 
-            return new User
+            var user = new User
             {
                 Id          = databaseModel.Id,
                 Name        = current.Name,
@@ -69,6 +71,8 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
                 Email       = current.Email,
                 Transaction = current.Transaction
             };
+            user.UUID = current.UUID;
+            return user;
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using Xamarin.Highcharts.Domain.ValueObjects;
 using Xamarin.HighCharts.InfraStructure.Domain;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 
@@ -12,8 +13,8 @@ namespace Xamarin.HighCharts.Domain.Entities
         #region Fields
 
         private string _description;
-        private int _category;
-        private string _date;
+        private ICategory _category;
+        private DateTime _date;
         private string _value;
 
         #endregion
@@ -25,7 +26,7 @@ namespace Xamarin.HighCharts.Domain.Entities
 			set { _description = value;   RaisedPropertyChanged(()=> Description); }
         }
 
-        public int Category
+        public ICategory Category
         {
             get { return _category; }
 			set { _category = value; RaisedPropertyChanged(()=> Category); }
@@ -37,7 +38,7 @@ namespace Xamarin.HighCharts.Domain.Entities
 			set { _value = value;RaisedPropertyChanged(()=> Value);  }
         }
 
-        public string Date
+        public DateTime Date
         {
             get { return _date; }
 			set { _date = value;RaisedPropertyChanged(()=> Date);  }
@@ -48,7 +49,7 @@ namespace Xamarin.HighCharts.Domain.Entities
 		#region Overridable
 		protected override void Validate()
 		{
-			if (string.IsNullOrEmpty (Description) || string.IsNullOrEmpty (Value) || string.IsNullOrEmpty (Date))
+			if (string.IsNullOrEmpty (Description) || string.IsNullOrEmpty (Value))
 				AddRule (ExpenseBusinessRules.Required);
 		
 
@@ -64,8 +65,19 @@ namespace Xamarin.HighCharts.Domain.Entities
 				if (member != null) 
 				{
 					var pInfo    = member.Member as PropertyInfo;
-					var property = currentDomain.GetDeclaredProperty(pInfo.Name);     
-					var value    = (string)property.GetValue(this, null);
+					var property = currentDomain.GetDeclaredProperty(pInfo.Name);
+                    var value    = string.Empty;
+
+                    switch (property.Name.ToLower())
+	                {
+                        case "category":
+                            value = ((ICategory)property.GetValue(this, null)).Id.ToString();
+                            break;
+
+		                default:
+                            value = (string)property.GetValue(this, null);
+                            break;
+	                }
 
 					if (string.IsNullOrEmpty(value))
 					{
