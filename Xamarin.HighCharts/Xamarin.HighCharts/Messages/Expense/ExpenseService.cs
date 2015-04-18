@@ -2,6 +2,8 @@
 using Xamarin.HighCharts.Base.Messages;
 using Xamarin.HighCharts.Domain.Entities;
 using Newtonsoft.Json;
+using Xamarin.HighCharts.WCFHighChartsService;
+using Xamarin.HighCharts.Messages.Base;
 
 namespace Xamarin.HighCharts
 {
@@ -13,7 +15,7 @@ namespace Xamarin.HighCharts
             public string Description { get; set; }
             public string Value { get; set; }
             public string Date { get; set; }
-            public int Category { get; set; }
+            public string Category { get; set; }
         }
 
 		
@@ -33,13 +35,29 @@ namespace Xamarin.HighCharts
                             Id          = expense.Id,
                             Description = expense.Description,
                             Value       = expense.Value,
-                            Category    = expense.Category.Id,
+                            Category    = expense.Category.Id.ToString(),
                             Date        = expense.Date.ToString()
                         }
                     );
-                Client.AddExpenseAsync(json);
+                var asyncCallStatus = new AsyncCallStatus<AddExpenseCompletedEventArgs>();
+                Client.AddExpenseCompleted += (sender, args) =>
+                {
+                    var status = args.UserState as AsyncCallStatus<AddExpenseCompletedEventArgs>;
+                    if (status != null)
+                        status.CompletedEventArgs = args;
 
-                return true;
+                    AutoResetEvent.Set();
+                };
+
+                Client.AddExpenseAsync(json);
+                AutoResetEvent.WaitOne();
+
+                if (asyncCallStatus.CompletedEventArgs.Error != null)
+                {
+                    throw asyncCallStatus.CompletedEventArgs.Error;
+                }
+                return asyncCallStatus.CompletedEventArgs.Result;
+              
             }
             catch (Exception operationException)
             {

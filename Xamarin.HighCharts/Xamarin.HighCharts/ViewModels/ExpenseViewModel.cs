@@ -128,7 +128,7 @@ namespace Xamarin.HighCharts.ViewModels
         {
 			get 
             {
-				  return DependencyResolver.Container.GetService<IExpenseRepository> ();
+				  return DependencyResolver.Container.GetService<IExpenseRepository>();
 			}
 		}
 
