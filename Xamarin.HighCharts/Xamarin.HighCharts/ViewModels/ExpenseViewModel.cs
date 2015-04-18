@@ -27,7 +27,7 @@ namespace Xamarin.HighCharts.ViewModels
         private Command _categoriesCommand;
         private ObservableCollection<CodeValue> _categories;
         private bool _categoryVisibility;
-        private string _categorySelectedTitle;
+        private int _categorySelectedIndex;
 
 		#endregion
 
@@ -77,17 +77,17 @@ namespace Xamarin.HighCharts.ViewModels
             }
         }
 
-        public string CategorySelectedTitle
+        public int CategorySelectedIndex
         {
             get 
             {
-                return _categorySelectedTitle; 
+                return _categorySelectedIndex; 
             }
 
-            private set 
+            set 
             {
-                _categorySelectedTitle = value;
-                RaisedPropertyChanged(() => CategorySelectedTitle);
+                _categorySelectedIndex = value;
+                RaisedPropertyChanged(() => CategorySelectedIndex);
             }
         }
 
@@ -110,17 +110,18 @@ namespace Xamarin.HighCharts.ViewModels
         {
             if (CategoryRepository != null)
             {
-                Categories = new ObservableCollection<CodeValue>
-                    (
-                        ((ICategoryRepository)CategoryRepository)
-                        .FindAll()
-                        .Select(c => new CodeValue 
-                                        {
-                                            Code  = c.Id.ToString(),
-                                            Value = c.Description
-                                        })
-                    );
-                CategoryVisibility =  !Categories.Any() ? false : true;
+
+                Categories = CodeValueHelper
+                            .Collection(((ICategoryRepository)CategoryRepository)
+                                                    .FindAll()
+                                                    .Select(c => new CodeValue
+                                                    {
+                                                        Code = c.Id.ToString(),
+                                                        Value = c.Description
+                                                    })
+                                        );
+
+                CategoryVisibility =  Categories.Count == 1 ? false : true;
             }
         }
 
@@ -202,15 +203,15 @@ namespace Xamarin.HighCharts.ViewModels
 
 				//Service
 				var result = expenseService.AddExpense(Domain);
-
-				if (result)
+				
+                if (result)
 				{
 					//Database
 					Repository.Save(Domain);
 					UnitWork.Commit();
 
 					//TODO .: Use internationalization for messages. 
-					await ActionMessage.DisplayAlert("Success", "User registered successfully.", "Ok");
+					await ActionMessage.DisplayAlert("Success", "Expense registered successfully.", "Ok");
                     Renew();
 				}
 				else
@@ -229,7 +230,7 @@ namespace Xamarin.HighCharts.ViewModels
             base.Renew();
 
             Domain.Date           = DateTime.Now;
-            CategorySelectedTitle = string.Empty;
+            CategorySelectedIndex = 0;
         }
 
 		#endregion

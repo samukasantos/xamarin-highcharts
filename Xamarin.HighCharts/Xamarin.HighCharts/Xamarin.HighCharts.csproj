@@ -50,6 +50,7 @@
     <Compile Include="Page\ListViewPage.cs" />
     <Compile Include="Utils\CodeValue.cs" />
     <Compile Include="Utils\CodeValueCollection.cs" />
+    <Compile Include="Utils\CodeValueHelper.cs" />
     <Compile Include="ViewModels\Base\Interfaces\ICategoryRepositoryService.cs" />
     <Compile Include="ViewModels\Base\Interfaces\IUserRepositoryService.cs" />
     <Compile Include="Messages\Base\ServiceBase.cs" />
