@@ -20,7 +20,7 @@ namespace Xamarin.HighCharts.Page
         {
 
             Title = "Menu";
-            // Icon = "settings.png";
+            Icon = "ic_item_list.png";
             BackgroundColor = Color.FromHex("1a1c20");
 
             Menu = new MenuListView();

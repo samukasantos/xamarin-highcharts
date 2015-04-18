@@ -20,7 +20,7 @@ namespace Xamarin.HighCharts.Page.MenuRootPage
             this.Add(new MenuRootIem()
             {
                 Title = "User Register",
-                //   IconSource = "contacts.png",
+                //IconSource = "ic_usuario.png",
                 TargetType = typeof(RegisterUserPage)
             });
 

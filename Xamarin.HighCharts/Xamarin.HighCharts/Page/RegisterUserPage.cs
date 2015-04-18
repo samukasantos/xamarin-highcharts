@@ -13,9 +13,10 @@ namespace Xamarin.HighCharts.Page
         public RegisterUserPage()
         {
             this.Title = "User Register .:";
+            this.Icon = "ic_usuario.png";
             this.BindingContext<IRegisterUserViewModel>();
 
-            var layout     = new StackLayout { Padding = 10 };
+            var layout = new StackLayout { Padding = 10 };
             var label = new Label
             {
 
@@ -40,7 +41,7 @@ namespace Xamarin.HighCharts.Page
             name.SetBinding(Entry.TextProperty, "Domain.Name");
             layout.Children.Add(name);
 
-			var button = new Button { Text = "Save", TextColor = Color.Black };
+            var button = new Button { Text = "Save", TextColor = Color.Black };
             button.SetBinding(Button.CommandProperty, "SaveCommand");
 
             layout.Children.Add(button);
@@ -49,6 +50,6 @@ namespace Xamarin.HighCharts.Page
 
         }
         #endregion
-        
+
     }
 }

@@ -101,7 +101,9 @@
     <AndroidResource Include="Resources\Drawable\ic_item_list.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\AndroidManifest.xml" />
+    <Content Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Xamarin.HighCharts.InfraStructure\Xamarin.HighCharts.InfraStructure.csproj">
