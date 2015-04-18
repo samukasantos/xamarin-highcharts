@@ -9,9 +9,15 @@ namespace Xamarin.HighCharts.Repository
     {
         #region Fields
 
-        private Dictionary<IAggregateRoot, IUnitWorkRepository> _saveAggregates;
-        private Dictionary<IAggregateRoot, IUnitWorkRepository> _updateAggregates;
-        private Dictionary<IAggregateRoot, IUnitWorkRepository> _deleteggregates;
+        //private Dictionary<IAggregateRoot, IUnitWorkRepository> _saveAggregates;
+        //private Dictionary<IAggregateRoot, IUnitWorkRepository> _updateAggregates;
+        //private Dictionary<IAggregateRoot, IUnitWorkRepository> _deleteggregates;
+
+        private AggregateUnitDictionary _saveAggregates;
+        private AggregateUnitDictionary _updateAggregates;
+        private AggregateUnitDictionary _deleteggregates;
+
+        
 
         #endregion
 
@@ -19,9 +25,13 @@ namespace Xamarin.HighCharts.Repository
 
         public UnitWork()
         {
-            _saveAggregates   = new Dictionary<IAggregateRoot, IUnitWorkRepository>();
-            _updateAggregates = new Dictionary<IAggregateRoot, IUnitWorkRepository>();
-            _deleteggregates  = new Dictionary<IAggregateRoot, IUnitWorkRepository>();
+            //_saveAggregates   = new Dictionary<IAggregateRoot, IUnitWorkRepository>();
+            //_updateAggregates = new Dictionary<IAggregateRoot, IUnitWorkRepository>();
+            //_deleteggregates  = new Dictionary<IAggregateRoot, IUnitWorkRepository>();
+
+            _saveAggregates   = new AggregateUnitDictionary();
+            _updateAggregates = new AggregateUnitDictionary();
+            _deleteggregates  = new AggregateUnitDictionary();
         }
 
         #endregion

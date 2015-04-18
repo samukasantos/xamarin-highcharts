@@ -38,6 +38,7 @@ namespace Xamarin.HighCharts.Page
             bindablePicker.SetBinding(BindablePicker.ItemsSourceProperty, "Categories");
             bindablePicker.SetBinding(BindablePicker.CommandProperty, "CategoriesCommand");
             bindablePicker.SetBinding(BindablePicker.IsEnabledProperty, "CategoryVisibility");
+            bindablePicker.SetBinding(BindablePicker.TitleProperty, "CategorySelectedTitle");
             layout.Children.Add(bindablePicker);
 
 			var description = new Entry { Placeholder = "Description" };

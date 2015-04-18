@@ -27,6 +27,7 @@ namespace Xamarin.HighCharts.ViewModels
         private Command _categoriesCommand;
         private ObservableCollection<CodeValue> _categories;
         private bool _categoryVisibility;
+        private string _categorySelectedTitle;
 
 		#endregion
 
@@ -73,6 +74,20 @@ namespace Xamarin.HighCharts.ViewModels
             get
             {
                  return DependencyResolver.Container.GetService<IValueObjectRepository<Category>>();
+            }
+        }
+
+        public string CategorySelectedTitle
+        {
+            get 
+            {
+                return _categorySelectedTitle; 
+            }
+
+            private set 
+            {
+                _categorySelectedTitle = value;
+                RaisedPropertyChanged(() => CategorySelectedTitle);
             }
         }
 
@@ -209,15 +224,13 @@ namespace Xamarin.HighCharts.ViewModels
 			}
 		}
 
-		/*public override void ThrowExceptionIfInvalidDomain(Expense domain)
-		{
-			var rules = domain.GetBrokenRules( c => c.Description, c => c.Date, c => c.Value);
-			if (rules.Any()) 
-			{
-				foreach (var rule in rules)
-					throw new Exception(rule.DescriptionRule);
-			}
-		}*/
+        public override void Renew()
+        {
+            base.Renew();
+
+            Domain.Date           = DateTime.Now;
+            CategorySelectedTitle = string.Empty;
+        }
 
 		#endregion
 

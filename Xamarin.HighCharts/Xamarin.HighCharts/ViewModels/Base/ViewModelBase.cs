@@ -62,7 +62,7 @@ namespace Xamarin.HighCharts.ViewModels.Base
 
         public abstract void ThrowExceptionIfInvalidDomain(T domain);
 
-        public void Renew() { Domain = new T(); }
+        public virtual void Renew() { Domain = new T(); }
 
         #endregion
 

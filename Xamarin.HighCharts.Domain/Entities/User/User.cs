@@ -111,8 +111,6 @@ namespace Xamarin.HighCharts.Domain.Entities
         }
 
         #endregion
-
-
         
     }
 }

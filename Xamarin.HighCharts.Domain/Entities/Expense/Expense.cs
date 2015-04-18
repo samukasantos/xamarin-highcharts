@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using Xamarin.Highcharts.Domain.ValueObjects;
+using Xamarin.HighCharts.InfraStructure.DependencyService;
 using Xamarin.HighCharts.InfraStructure.Domain;
 using Xamarin.HighCharts.InfraStructure.Domain.Interfaces;
 
@@ -46,13 +47,20 @@ namespace Xamarin.HighCharts.Domain.Entities
 
         #endregion
 
-		#region Overridable
-		protected override void Validate()
+        #region Constructor
+
+        public Expense()
+        {
+            Category = DependencyResolver.Container.GetService<ICategory>();
+        }
+
+        #endregion
+
+        #region Overridable
+        protected override void Validate()
 		{
 			if (string.IsNullOrEmpty (Description) || string.IsNullOrEmpty (Value))
 				AddRule (ExpenseBusinessRules.Required);
-		
-
 		}
 
 		protected override void ValidateWithCriteria (params Expression<Func<Expense, object>>[] properties)
@@ -72,6 +80,8 @@ namespace Xamarin.HighCharts.Domain.Entities
 	                {
                         case "category":
                             value = ((ICategory)property.GetValue(this, null)).Id.ToString();
+                            if(value == "0")
+                                AddRule(ExpenseBusinessRules.CategoryNotSelected);
                             break;
 
 		                default:
