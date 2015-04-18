@@ -14,7 +14,7 @@ namespace Xamarin.HighCharts.Page
         #region Constructor
         public LoginUserPage()
         {
-
+            this.Title = "Login .:";
             this.BindingContext<ILoginViewModel>();
 
             var layout     = new StackLayout { Padding = 10 };
@@ -39,7 +39,7 @@ namespace Xamarin.HighCharts.Page
             password.SetBinding(Entry.TextProperty, "Domain.Password");
             layout.Children.Add(password);
 
-			var button = new Button { Text = "Login", TextColor = Color.Black };
+			var button = new Button { Text = "Sign in", TextColor = Color.Black };
             button.SetBinding(Button.CommandProperty, "LoginCommand");
 
             layout.Children.Add(button);

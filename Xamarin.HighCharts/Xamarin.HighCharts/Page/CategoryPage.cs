@@ -11,6 +11,7 @@ namespace Xamarin.HighCharts.Page
         #region Constructor
         public CategoryPage()
         {
+            this.Title = "Category Register .:";
             this.BindingContext<ICategoryViewModel>();
 
             var layout = new StackLayout { Padding = 10 };

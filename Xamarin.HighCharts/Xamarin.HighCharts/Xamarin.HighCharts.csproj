@@ -41,7 +41,6 @@
     <Compile Include="Messages\Base\WCFService.cs" />
     <Compile Include="Messages\Category\CategoryService.cs" />
     <Compile Include="Messages\Category\ICategoryService.cs" />
-    <Compile Include="Page\BindablePickerPageSample.cs" />
     <Compile Include="Page\CategoryPage.cs" />
     <Compile Include="Page\ChartPageLines.cs" />
     <Compile Include="Page\Context\PageContext.cs" />

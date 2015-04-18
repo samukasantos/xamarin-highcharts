@@ -12,6 +12,7 @@ namespace Xamarin.HighCharts.Page
         #region Constructor
         public RegisterUserPage()
         {
+            this.Title = "User Register .:";
             this.BindingContext<IRegisterUserViewModel>();
 
             var layout     = new StackLayout { Padding = 10 };

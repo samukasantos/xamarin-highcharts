@@ -32,6 +32,7 @@ namespace ChartsF.Pages
         }
         public ChartPageLines()
         {
+            this.Title = "Demonstrative Chart .:";
             Device.BeginInvokeOnMainThread(() =>
               {
                   LoadData();

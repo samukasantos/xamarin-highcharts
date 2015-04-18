@@ -16,6 +16,7 @@ namespace Xamarin.HighCharts.Page
 		#region Constructor
 		public ExpensePage()
 		{
+            this.Title = "Expense Register .:";
 			this.BindingContext<IExpenseViewModel>();
 
 			var layout     = new StackLayout { Padding = 10 };
