@@ -52,11 +52,8 @@ namespace Xamarin.HighCharts
                 Client.AddExpenseAsync(json);
                 AutoResetEvent.WaitOne();
 
-                if (asyncCallStatus.CompletedEventArgs.Error != null)
-                {
-                    throw asyncCallStatus.CompletedEventArgs.Error;
-                }
-                return asyncCallStatus.CompletedEventArgs.Result;
+                return true;
+                
               
             }
             catch (Exception operationException)

@@ -210,7 +210,7 @@ namespace Xamarin.HighCharts.ViewModels
 					UnitWork.Commit();
 
 					//TODO .: Use internationalization for messages. 
-					await ActionMessage.DisplayAlert("Success", "User registered successfully.", "Ok");
+					await ActionMessage.DisplayAlert("Sucesso", "Despesas cadastradas com sucesso.", "Ok");
                     Renew();
 				}
 				else
