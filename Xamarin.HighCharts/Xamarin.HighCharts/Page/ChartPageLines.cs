@@ -43,7 +43,7 @@ namespace ChartsF.Pages
         private async void LoadData()
         {
             htmlSource = new HtmlWebViewSource();
-        
+
 
 
 
@@ -93,9 +93,9 @@ namespace ChartsF.Pages
 
             listViewItem.ItemTemplate = new DataTemplate(typeof(LayoutCotacaoCell));
             //Define item selecionado
-           
+
             stack.Children.Add(titleList);
-            stack.Children.Add(listViewItem);
+           
 
             GenerateGraphics(GetItem1(), listViewPage);
         }
@@ -104,15 +104,15 @@ namespace ChartsF.Pages
         public List<string> GetItem1()
         {
             var valueJson = new List<string>();
-           
 
-                valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-4).Date) + ",200.50]");
-                valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-3).Date) + ",100.50]");
-                valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-2).Date) + ",90.50]");
-                valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-1).Date) + ",200.50]");
 
-         
-           
+            valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-4).Date) + ",200.50]");
+            valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-3).Date) + ",100.50]");
+            valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-2).Date) + ",90.50]");
+            valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-1).Date) + ",200.50]");
+
+
+
             return valueJson;
         }
 
@@ -204,8 +204,7 @@ namespace ChartsF.Pages
                 Children =
                           {
                               
-                              browser,
-                              stack
+                              browser
                              
                           },
                 Spacing = 10,

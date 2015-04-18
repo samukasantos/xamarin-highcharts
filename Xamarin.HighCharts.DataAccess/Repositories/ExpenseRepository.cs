@@ -26,7 +26,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
             var expenseDB = new ExpenseDatabase
             {
                 Id = (aggregateRoot as EntityBase<Expense>).Id,
-                Date =  expense.Date.ToString(),
+                Date = expense.Date.ToString(),
                 Value = expense.Value,
                 Description = expense.Description,
                 Category = expense.Category.Id
@@ -53,19 +53,13 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
 
             var dataItems = DBContext.ExecuteCrossQuery<ExpenseComposite>
                 (
-                    @"SELECT EXPENSE.Id as Id, " +
-                    "        EXPENSE.Description as Description "+
-                    "        EXPENSE.Category as Category " +
-                    "        EXPENSE.Date as Date " +
-                    "        EXPENSE.Value as Value " +
-                    "        EXPENSE.UUID as UUID " +
-                    "        CATEGORY.Description as CategoryDescription" +
-                    " FROM EXPENSE " +
-                    "   INNER JOIN CATEGORY " +
-                    "   ON EXPENSE.CATEGORY = CATEGORY.ID ",
+                    @" SELECT *
+                     FROM EXPENSE 
+                       INNER JOIN CATEGORY 
+                       ON EXPENSE.CATEGORY = CATEGORY.ID ",
                     new object[] { }
                 );
-                
+
             foreach (var item in dataItems)
                 expenses.Add(ConvertToDomain(item));
 
@@ -81,7 +75,7 @@ namespace Xamarin.HighCharts.DataAccess.Repositories
             var expense = new Expense
             {
                 Id = databaseModel.Id,
-                Category = new Category 
+                Category = new Category
                     {
                         Id = current.Category,
                         Description = current.CategoryDescription

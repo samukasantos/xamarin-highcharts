@@ -41,11 +41,13 @@
     <Compile Include="Messages\Base\WCFService.cs" />
     <Compile Include="Messages\Category\CategoryService.cs" />
     <Compile Include="Messages\Category\ICategoryService.cs" />
+    <Compile Include="Page\CarouselExpensePage.cs" />
     <Compile Include="Page\CategoryPage.cs" />
     <Compile Include="Page\ChartPageLines.cs" />
     <Compile Include="Page\Context\PageContext.cs" />
     <Compile Include="Page\Interfaces\IActionMessage.cs" />
     <Compile Include="Page\LayoutCotacaoCell.cs" />
+    <Compile Include="Page\ListViewExpensePage.cs" />
     <Compile Include="Page\ListViewPage.cs" />
     <Compile Include="Utils\CodeValue.cs" />
     <Compile Include="Utils\CodeValueCollection.cs" />

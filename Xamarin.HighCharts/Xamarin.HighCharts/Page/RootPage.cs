@@ -36,13 +36,26 @@ namespace Xamarin.HighCharts.Page
 
         private void NavigateTo(MenuRootIem menu)
         {
-            Xamarin.Forms.Page displayPage = (Xamarin.Forms.Page)Activator.CreateInstance(menu.TargetType);
-
-            Detail = new CustomNavigationPage(displayPage)
+            if (menu.TargetType != typeof(CarouselExpensePage))
             {
-                BarBackgroundColor = backGroundBolor,
-                Title = displayPage.Title
-            };
+                Xamarin.Forms.Page displayPage = (Xamarin.Forms.Page)Activator.CreateInstance(menu.TargetType);
+                Detail = new CustomNavigationPage(displayPage)
+                {
+                    BarBackgroundColor = backGroundBolor,
+                    Title = displayPage.Title
+                };
+            }
+            else
+            {
+                CarouselExpensePage displayPage = (CarouselExpensePage)Activator.CreateInstance(menu.TargetType);
+                Detail = new CustomNavigationPage(displayPage)
+                {
+                    BarBackgroundColor = backGroundBolor,
+                    Title = displayPage.Title
+                };
+            }
+
+
             IsPresented = false;
         }
         protected override void OnAppearing()

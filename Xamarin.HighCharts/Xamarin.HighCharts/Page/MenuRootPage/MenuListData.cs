@@ -35,7 +35,7 @@ namespace Xamarin.HighCharts.Page.MenuRootPage
 				{
 					Title = "Expense",
 					//   IconSource = "contacts.png",
-					TargetType = typeof(ExpensePage)
+                    TargetType = typeof(CarouselExpensePage)
 				});
 
             this.Add(new MenuRootIem()
