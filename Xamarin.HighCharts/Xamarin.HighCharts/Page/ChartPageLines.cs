@@ -1,6 +1,8 @@
-﻿using ChartsF.ChartBLL;
-using ChartsF.ChartModel;
-using ChartsF.Pages.Stock;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using Xamarin.Forms;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,9 @@ using Xamarin.Forms;
 
 namespace ChartsF.Pages
 {
-    public class ChartPageLines : BaseContentPage
+    public class ChartPageLines : ContentPage
     {
-        private string _htmlPagePath = "ChartsF.WebContent.HTML.bar_line.html";
+        private string _htmlPagePath = "Xamarin.HighCharts.WebContent.HTML.bar_line.html";
         private string _htmlValue = "_______VALUE_______";
 
         ListViewPage listViewPage;
@@ -40,7 +42,7 @@ namespace ChartsF.Pages
         private async void LoadData()
         {
             htmlSource = new HtmlWebViewSource();
-            GetHistoriclStock stock = new GetHistoriclStock();
+        
 
 
 
@@ -90,49 +92,26 @@ namespace ChartsF.Pages
 
             listViewItem.ItemTemplate = new DataTemplate(typeof(LayoutCotacaoCell));
             //Define item selecionado
-            listViewItem.ItemTapped += (sender, e) =>
-            {
-                stock = null;
-                stock = new GetHistoriclStock();
-                var item = (ChartsF.Pages.ListViewPage.Objetos)listViewItem.SelectedItem;
-
-                htmlSource.Html = GenerateHTML(GetItem1(stock.GetHistorical(item.UltimoPreco, "2015").ToList()));
-                browser.Source = htmlSource;
-
-                listViewItem.SelectedItem = null;
-
-
-
-
-            };
+           
             stack.Children.Add(titleList);
             stack.Children.Add(listViewItem);
 
-            GenerateGraphics(GetItem1(stock.GetHistorical("YHOO", "2015").ToList()), listViewPage);
+            GenerateGraphics(GetItem1(), listViewPage);
         }
 
 
-        public List<string> GetItem1(List<HistoricalStock> listStock = null)
+        public List<string> GetItem1()
         {
             var valueJson = new List<string>();
-            if (listStock == null)
-            {
+           
 
                 valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-4).Date) + ",200.50]");
                 valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-3).Date) + ",100.50]");
                 valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-2).Date) + ",90.50]");
                 valueJson.Add("[" + ToJsonTicks(DateTime.Now.Date.AddMonths(-1).Date) + ",200.50]");
 
-            }
-            else
-            {
-
-                foreach (HistoricalStock stock in listStock.Where(p => p.Date.Date >= DateTime.Now.AddYears(-5)).OrderBy(p => p.Date).ToList())
-                {
-                    valueJson.Add("[" + ToJsonTicks(stock.Date.Date) + "," + stock.Close + "]");
-                }
-
-            }
+         
+           
             return valueJson;
         }
 
@@ -237,7 +216,7 @@ namespace ChartsF.Pages
 
         public string GenerateHTML(List<string> valueUpdate)
         {
-            var assembly = typeof(BarChartEntity).GetTypeInfo().Assembly;
+            var assembly = typeof(LayoutCotacaoCell).GetTypeInfo().Assembly;
 
             //Get html text string
             string htmlTextString = GetStringResource(assembly, _htmlPagePath);
@@ -245,8 +224,8 @@ namespace ChartsF.Pages
             //Replace the javascript method into the html
             string jsTextString = string.Empty;
 
-            jsTextString += GetStringResource(assembly, "ChartsF.WebContent.HTML.js.highstock.js");
-            jsTextString += GetStringResource(assembly, "ChartsF.WebContent.HTML.js.modules.exporting.js");
+            jsTextString += GetStringResource(assembly, "Xamarin.HighCharts.WebContent.HTML.js.highstock.js");
+            jsTextString += GetStringResource(assembly, "Xamarin.HighCharts.WebContent.HTML.js.modules.exporting.js");
 
 
             string value = GetStringResource(assembly, _htmlPagePath);

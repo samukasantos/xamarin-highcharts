@@ -1,4 +1,5 @@
 ﻿
+using ChartsF.Pages;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -36,6 +37,13 @@ namespace Xamarin.HighCharts.Page.MenuRootPage
 					//   IconSource = "contacts.png",
 					TargetType = typeof(ExpensePage)
 				});
+
+            this.Add(new MenuRootIem()
+            {
+                Title = "Demostrativos",
+                //   IconSource = "contacts.png",
+                TargetType = typeof(ChartPageLines)
+            });
 			
             
         #endregion

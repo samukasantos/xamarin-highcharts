@@ -43,8 +43,11 @@
     <Compile Include="Messages\Category\ICategoryService.cs" />
     <Compile Include="Page\BindablePickerPageSample.cs" />
     <Compile Include="Page\CategoryPage.cs" />
+    <Compile Include="Page\ChartPageLines.cs" />
     <Compile Include="Page\Context\PageContext.cs" />
     <Compile Include="Page\Interfaces\IActionMessage.cs" />
+    <Compile Include="Page\LayoutCotacaoCell.cs" />
+    <Compile Include="Page\ListViewPage.cs" />
     <Compile Include="Utils\CodeValue.cs" />
     <Compile Include="Utils\CodeValueCollection.cs" />
     <Compile Include="ViewModels\Base\Interfaces\ICategoryRepositoryService.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="ViewModels\Base\Interfaces\IExpenseRepositoryService.cs" />
     <Compile Include="Messages\Expense\ExpenseService.cs" />
     <Compile Include="Messages\Expense\IExpenseService.cs" />
+    <Compile Include="WebContent\MyWebView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
@@ -158,6 +162,46 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WCFHighChartsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebContent\HTML\bar_chart.html" />
+    <EmbeddedResource Include="WebContent\HTML\bar_line.html" />
+    <Content Include="WebContent\HTML\js\adapters\standalone-framework.js" />
+    <Content Include="WebContent\HTML\js\adapters\standalone-framework.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highcharts-3d.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highcharts-3d.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highcharts-more.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highcharts-more.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highcharts.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highstock-all.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highstock.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\highstock.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\canvas-tools.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\canvas-tools.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\data.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\data.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\drilldown.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\drilldown.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\exporting.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\exporting.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\funnel.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\funnel.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\heatmap.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\heatmap.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\no-data-to-display.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\no-data-to-display.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\solid-gauge.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\solid-gauge.src.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\treemap.js" />
+    <EmbeddedResource Include="WebContent\HTML\js\modules\treemap.src.js" />
+    <Content Include="WebContent\HTML\js\themes\dark-blue.js" />
+    <Content Include="WebContent\HTML\js\themes\dark-green.js" />
+    <Content Include="WebContent\HTML\js\themes\dark-unica.js" />
+    <Content Include="WebContent\HTML\js\themes\gray.js" />
+    <Content Include="WebContent\HTML\js\themes\grid-light.js" />
+    <Content Include="WebContent\HTML\js\themes\grid.js" />
+    <Content Include="WebContent\HTML\js\themes\sand-signika.js" />
+    <Content Include="WebContent\HTML\js\themes\skies.js" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

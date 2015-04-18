@@ -6,38 +6,46 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
 
-                // Create the chart
-                $('#container').highcharts('StockChart', {
+            $(document).ready(function () {
 
-
-                    rangeSelector: {
-                        selected: 1
+                // Build the chart
+                $('#container').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
                     },
-
                     title: {
-                        text: '_______TITULO_______'
+                        text: 'Demonstrativo'
                     },
-                    lang: {
-                        decimalPoint: ','
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
-                    navigator: {
-                        enabled: false
-                    },
-
-                    series: [{
-                        name: '_______PRODUTO_______',
-                        data: _______VALUE_______,
-                        tooltip: {
-                            valueDecimals: 2
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
                         }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Meus Gastos',
+                        data: [
+                            ['Alimentação', 45.0],                            
+                            ['Unimed', 8.5],
+                            ['Almoço', 6.2],
+                            ['Dentista', 0.7]
+                        ]
                     }]
                 });
             });
-            var chart = $('#container').highcharts().showLoading();
-        });
 
+        });
         
 
         
