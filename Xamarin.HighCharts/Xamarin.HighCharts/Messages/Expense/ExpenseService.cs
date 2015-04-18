@@ -49,7 +49,7 @@ namespace Xamarin.HighCharts
                     AutoResetEvent.Set();
                 };
 
-                Client.AddExpenseAsync(json);
+                Client.AddExpenseAsync(json, asyncCallStatus);
                 AutoResetEvent.WaitOne();
 
                 return true;

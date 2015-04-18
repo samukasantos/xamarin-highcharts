@@ -50,6 +50,7 @@ namespace Xamarin.HighCharts
 				new DependencyObject(typeof(IExpense), typeof(Expense), LifetimeType.Transient),
                 new DependencyObject(typeof(IUserRepository), typeof(UserRepository), LifetimeType.Transient),
 				new DependencyObject(typeof(IExpenseRepository), typeof(ExpenseRepository), LifetimeType.Transient),
+                new DependencyObject(typeof(ICategoryRepository), typeof(CategoryRepository), LifetimeType.Transient),
                 new DependencyObject(typeof(IValueObjectRepository<Category>), typeof(CategoryRepository), LifetimeType.Transient),
                 new DependencyObject(typeof(IUserDatabase), typeof(UserDatabase), LifetimeType.Transient),
                 new DependencyObject(typeof(ICategoryDatabase), typeof(CategoryDatabase), LifetimeType.Transient),

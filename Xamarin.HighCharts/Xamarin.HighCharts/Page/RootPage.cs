@@ -1,5 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.HighCharts.InfraStructure.DependencyService;
+using Xamarin.HighCharts.Messages;
 using Xamarin.HighCharts.Page.MenuRootPage;
 using Xamarin.HighCharts.Page.Navigation;
 
@@ -9,12 +11,15 @@ namespace Xamarin.HighCharts.Page
     {
         #region Fields
 
-        private Color backGroundBolor = Color.FromHex("6fc833"); 
+        private Color backGroundBolor = Color.FromHex("6fc833");
         #endregion
 
         #region Constructor
         public RootPage()
         {
+            var categoryService = DependencyResolver.Container.GetService<ICategoryService>();
+
+            categoryService.GetAllCategoryInCloud();
             var menuPage = new MenuPage();
             menuPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as MenuRootIem);
 
@@ -24,7 +29,7 @@ namespace Xamarin.HighCharts.Page
                 BarBackgroundColor = backGroundBolor,
             };
         }
-        
+
         #endregion
 
         #region Methods
@@ -36,14 +41,14 @@ namespace Xamarin.HighCharts.Page
             Detail = new CustomNavigationPage(displayPage)
             {
                 BarBackgroundColor = backGroundBolor,
-				Title = displayPage.Title
+                Title = displayPage.Title
             };
             IsPresented = false;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-        } 
+        }
 
         #endregion
     }

@@ -54,6 +54,30 @@
   <wsdl:message name="IWCFHighChartsService_UpdateExpense_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateExpenseResponse" />
   </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_AddCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategory" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_AddCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_DeleteCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_DeleteCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_UpdateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategory" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_UpdateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_GetAllCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCategory" />
+  </wsdl:message>
+  <wsdl:message name="IWCFHighChartsService_GetAllCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCategoryResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWCFHighChartsService">
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/AddUser" message="tns:IWCFHighChartsService_AddUser_InputMessage" />
@@ -86,6 +110,22 @@
     <wsdl:operation name="UpdateExpense">
       <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/UpdateExpense" message="tns:IWCFHighChartsService_UpdateExpense_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/UpdateExpenseResponse" message="tns:IWCFHighChartsService_UpdateExpense_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/AddCategory" message="tns:IWCFHighChartsService_AddCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/AddCategoryResponse" message="tns:IWCFHighChartsService_AddCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/DeleteCategory" message="tns:IWCFHighChartsService_DeleteCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/DeleteCategoryResponse" message="tns:IWCFHighChartsService_DeleteCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/UpdateCategory" message="tns:IWCFHighChartsService_UpdateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/UpdateCategoryResponse" message="tns:IWCFHighChartsService_UpdateCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFHighChartsService/GetAllCategory" message="tns:IWCFHighChartsService_GetAllCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFHighChartsService/GetAllCategoryResponse" message="tns:IWCFHighChartsService_GetAllCategory_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWCFHighChartsService" type="tns:IWCFHighChartsService">
@@ -155,6 +195,42 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateExpense">
       <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/UpdateExpense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategory">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/AddCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/UpdateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCategory">
+      <soap:operation soapAction="http://tempuri.org/IWCFHighChartsService/GetAllCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
